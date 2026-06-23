@@ -55,6 +55,7 @@
          synthetic-click quirks that left these buttons unresponsive. */
       let done = false;
       const pick = (e) => { if (done) return; done = true; e.preventDefault(); choose(state, opt, onChoice); };
+      btn.addEventListener('touchend', pick);
       btn.addEventListener('pointerup', pick);
       btn.addEventListener('click', pick);
       els.options.appendChild(btn);

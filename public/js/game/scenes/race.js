@@ -141,7 +141,7 @@
       style: 'https://basemaps.cartocdn.com/gl/dark-matter-gl-style/style.json',
       center,
       zoom: 14.5,
-      pitch: 55,
+      pitch: 0,
       bearing: 0,
       antialias: true,
       attributionControl: { compact: true },
@@ -196,7 +196,7 @@
 
       /* Player marker */
       const playerEl = makeBikeMarker('cyclist-player-topdown', true);
-      playerMarker = new maplibregl.Marker({ element: playerEl, anchor: 'center', rotationAlignment: 'viewport' })
+      playerMarker = new maplibregl.Marker({ element: playerEl, anchor: 'center', rotationAlignment: 'map', pitchAlignment: 'map' })
         .setLngLat(center)
         .addTo(m);
 
@@ -206,7 +206,7 @@
       const pelo = window.rcEngine?.getPeloton?.() || [];
       for (let i = 0; i < (pelo.length || 4); i++) {
         const el = makeBikeMarker(sprites[i % sprites.length], false);
-        const mk = new maplibregl.Marker({ element: el, anchor: 'center', rotationAlignment: 'viewport' })
+        const mk = new maplibregl.Marker({ element: el, anchor: 'center', rotationAlignment: 'map', pitchAlignment: 'map' })
           .setLngLat(center)
           .addTo(m);
         pelotonMarkers.push(mk);
@@ -247,15 +247,24 @@
       mapTickHandle = requestAnimationFrame(tick);
       return;
     }
+    /* Freeze the map while a modal is open (paused) — the per-frame
+       map.jumpTo() repaint under the overlay was eating touches on the
+       tactic/finish buttons on mobile. */
+    if (state.paused || state.finished) {
+      mapTickHandle = requestAnimationFrame(tick);
+      return;
+    }
     const pct = state.progressPct || 0;
     const playerPct = pct;
     const pCoord = pctToCoord(playerPct);
     const heading = bearingAt(playerPct);
 
-    if (playerMarker) playerMarker.setLngLat(pCoord);
+    /* Map stays north-up; each rider is rotated to its own travel heading so
+       the top-down sprite always points the way it's actually going. */
+    if (playerMarker) { playerMarker.setLngLat(pCoord); playerMarker.setRotation(heading); }
 
-    /* Camera follows player smoothly with bearing aligned to direction of travel */
-    map.jumpTo({ center: pCoord, bearing: heading });
+    /* Camera follows the player (no map rotation — north-up). */
+    map.jumpTo({ center: pCoord });
 
     /* Peloton positions: use rcEngine.getPeloton — relativeAhead is in
        worldY units (~80 per pct). Convert that to pct-delta for path
@@ -267,6 +276,7 @@
       const dPct = p.relativeAhead / 80; // worldY/80 = pct
       const otherPct = Math.max(0, Math.min(100, playerPct + dPct));
       mk.setLngLat(pctToCoord(otherPct));
+      mk.setRotation(bearingAt(otherPct));
       /* Visually fade riders that are far behind the player */
       const el = mk.getElement();
       if (dPct < -3 && !el.classList.contains('map-passed')) {
@@ -361,7 +371,7 @@
     } else {
       hideMapLoading();
       /* Reuse map; re-add markers if this isn't first time */
-      map.flyTo({ center: routeCoords[0], zoom: 14.5, pitch: 55, bearing: 0, duration: 0 });
+      map.flyTo({ center: routeCoords[0], zoom: 14.5, pitch: 0, bearing: 0, duration: 0 });
     }
 
     /* Start the per-frame map updater */
