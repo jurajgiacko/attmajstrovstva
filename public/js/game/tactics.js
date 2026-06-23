@@ -70,7 +70,7 @@
       const ring = els.modal.querySelector('.ring');
       if (ring) {
         /* CSS conic-gradient: how much of the ring is "spent" */
-        ring.style.background = `conic-gradient(var(--rc-energy) ${(1 - fraction) * 360}deg, rgba(228,203,157,.18) 0)`;
+        ring.style.background = `conic-gradient(var(--rc-energy) ${(1 - fraction) * 360}deg, rgba(241, 204, 126,.18) 0)`;
       }
       if (remaining > 0 && active === tactic) {
         timerInt = requestAnimationFrame(tickCountdown);

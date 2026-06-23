@@ -77,27 +77,25 @@
 
     /* Top badges */
     const rcLogo = await loadImg('/assets/logos/att_investments_logo.svg');
-    const enLogo = await loadImg('/assets/logos/enervit_logo_white.svg');
-    /* Draw each logo at a fixed height, preserving its natural aspect ratio
-       (forcing a fixed width was squashing the wide Enervit wordmark). */
-    const logoY = 96;
-    function drawLogoH(img, anchorX, targetH, align) {
-      if (!img) return 0;
-      const ar = (img.naturalWidth || img.width) / (img.naturalHeight || img.height) || 3;
-      const w = targetH * ar;
-      const x = align === 'right' ? anchorX - w : anchorX;
-      ctx.drawImage(img, x, logoY, w, targetH);
-      return w;
-    }
-    drawLogoH(rcLogo, 70, 74, 'left');      // ATT — top-left
-    drawLogoH(enLogo, 1010, 50, 'right');   // Enervit — top-right, true aspect
-
-    /* Big "×" between logos */
+    const enLogo = await loadImg('/assets/logos/enervit_logo_white_tight.svg');
+    /* Both logos at the SAME height, preserving aspect ratio, as one centered
+       group with a "×" between — proportional, equal-sized, close together. */
+    const logoH = 50, gap = 30, logoY = 92;
+    const ar = (img) => img ? ((img.naturalWidth || img.width) / (img.naturalHeight || img.height) || 3) : 0;
+    const attW = ar(rcLogo) * logoH;
+    const enW  = ar(enLogo) * logoH;
+    const xMark = 30;
+    const total = attW + gap + xMark + gap + enW;
+    let lx = (1080 - total) / 2;
+    if (rcLogo) ctx.drawImage(rcLogo, lx, logoY, attW, logoH);
+    lx += attW + gap;
     ctx.fillStyle = '#f1cc7e';
-    ctx.font = '700 40px "Inter", sans-serif';
+    ctx.font = '700 36px "Inter", sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('×', 540, logoY + 34);
+    ctx.fillText('×', lx + xMark / 2, logoY + logoH / 2);
+    lx += xMark + gap;
+    if (enLogo) ctx.drawImage(enLogo, lx, logoY, enW, logoH);
 
     /* Title block bottom */
     ctx.fillStyle = '#f6dca6';

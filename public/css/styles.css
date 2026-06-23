@@ -184,14 +184,14 @@ body.home .shell { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
   overflow: hidden;
   aspect-ratio: 4 / 5;
   background: #001026;
-  border: 1px solid rgba(228,203,157,.18);
+  border: 1px solid rgba(241, 204, 126,.18);
   isolation: isolate;
   transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
 }
 .monument-card.is-active:hover {
   transform: translateY(-6px);
   box-shadow: 0 22px 48px rgba(229, 55, 71, 0.28);
-  border-color: rgba(228,203,157,.5);
+  border-color: rgba(241, 204, 126,.5);
 }
 .monument-card .mc-art {
   position: absolute;
@@ -261,7 +261,7 @@ body.home .shell { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
   display: inline-block;
   margin-top: 4px;
   padding: 6px 12px;
-  border: 1px solid rgba(228,203,157,.45);
+  border: 1px solid rgba(241, 204, 126,.45);
   border-radius: 999px;
   font-size: .72rem;
   letter-spacing: .2em;
@@ -276,7 +276,7 @@ body.home .shell { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
   color: var(--rc-cream-soft);
   padding: 22px 20px calc(22px + env(safe-area-inset-bottom));
   font-size: .85rem;
-  border-top: 1px solid rgba(228,203,157,.1);
+  border-top: 1px solid rgba(241, 204, 126,.1);
 }
 .home-footer .shell {
   display: flex;
@@ -326,7 +326,7 @@ body.home .shell { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
   content: "";
   position: absolute;
   inset: 0;
-  background: radial-gradient(60% 80% at 80% 20%, rgba(228, 203, 157, 0.18), transparent 70%);
+  background: radial-gradient(60% 80% at 80% 20%, rgba(241, 204, 126, 0.18), transparent 70%);
   pointer-events: none;
 }
 .hero .shell { position: relative; z-index: 1; text-align: center; }
@@ -528,31 +528,26 @@ body.race-active .game-stage { background: transparent; }
 
 /* Bike markers on the map */
 .map-bike-marker {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 40px;
+  height: 40px;
+  display: block;
+  overflow: hidden;             /* crop the transparent margin around the rider */
   pointer-events: none;
   will-change: transform;
-  /* Circular rider token instead of a flat rectangular card */
-  border-radius: 50%;
-  overflow: hidden;
-  border: 2px solid rgba(241,204,126,.85);
-  background: #00205b;
-  box-shadow: 0 3px 9px rgba(0,0,0,.55);
+  /* Transparent cyclist (white bg chroma-keyed out) — no card, just a rider */
+  filter: drop-shadow(0 3px 5px rgba(0,0,0,.55));
 }
 .map-bike-marker img {
-  width: 134%;
-  height: 134%;
-  object-fit: cover;            /* fill the circle, crop the card edges */
-  object-position: center 36%;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: scale(2.15);        /* zoom into the centered rider */
+  transform-origin: 50% 45%;
 }
 .map-bike-marker.map-player {
-  width: 60px;
-  height: 60px;
-  border-color: #e30613;
-  box-shadow: 0 4px 14px rgba(229,55,71,0.6);
+  width: 54px;
+  height: 54px;
+  filter: drop-shadow(0 4px 8px rgba(229,55,71,0.65));
 }
 .map-bike-marker.map-player::after {
   content: "";
@@ -775,7 +770,7 @@ body.race-active .game-stage { background: transparent; }
   padding: 10px 22px;
   background: rgba(0, 32, 91, 0.85);
   color: var(--rc-cream);
-  border: 1px solid rgba(228, 203, 157, 0.4);
+  border: 1px solid rgba(241, 204, 126, 0.4);
   border-radius: 999px;
   font-family: var(--font-display);
   font-weight: 700;
@@ -800,7 +795,7 @@ body.race-active .game-stage { background: transparent; }
   border-radius: 8px;
   font-family: var(--font-body);
   font-size: .8rem;
-  background: rgba(228, 203, 157, 0.18);
+  background: rgba(241, 204, 126, 0.18);
 }
 .segment-banner.up   .gradient { color: var(--rc-energy); }
 .segment-banner.down .gradient { color: var(--ok); }
@@ -879,11 +874,11 @@ body.race-active .game-stage { background: transparent; }
   font-size: .7rem;
   letter-spacing: .22em;
   text-transform: uppercase;
-  background: rgba(228,203,157,.18);
+  background: rgba(241, 204, 126,.18);
   color: var(--rc-cream);
   padding: 5px 14px;
   border-radius: 999px;
-  border: 1px solid rgba(228,203,157,.35);
+  border: 1px solid rgba(241, 204, 126,.35);
 }
 .scene-overlay .prerace-foot {
   font-size: .82rem;
@@ -905,7 +900,7 @@ body.race-active .game-stage { background: transparent; }
 .intro-stats > div {
   text-align: center;
   background: rgba(255,255,255,.06);
-  border: 1px solid rgba(228,203,157,.2);
+  border: 1px solid rgba(241, 204, 126,.2);
   border-radius: 12px;
   padding: 10px 14px;
   min-width: 80px;
@@ -937,7 +932,7 @@ body.race-active .game-stage { background: transparent; }
 }
 .choice {
   background: rgba(255,255,255,.06);
-  border: 1px solid rgba(228,203,157,.3);
+  border: 1px solid rgba(241, 204, 126,.3);
   border-radius: 14px;
   color: #fff;
   padding: 14px 18px;
@@ -948,7 +943,7 @@ body.race-active .game-stage { background: transparent; }
 }
 .choice:hover, .choice:focus-visible {
   transform: translateY(-2px);
-  background: rgba(228,203,157,.18);
+  background: rgba(241, 204, 126,.18);
   outline: none;
 }
 .choice .choice-label {
@@ -981,7 +976,7 @@ body.race-active .game-stage { background: transparent; }
   align-items: center;
   gap: 8px;
   background: rgba(255,255,255,.08);
-  border: 1px solid rgba(228,203,157,.32);
+  border: 1px solid rgba(241, 204, 126,.32);
   border-radius: 16px;
   padding: 14px 12px;
   font-family: inherit;
@@ -992,7 +987,7 @@ body.race-active .game-stage { background: transparent; }
 }
 .food-card:hover, .food-card:focus-visible {
   transform: translateY(-4px);
-  background: rgba(228,203,157,.18);
+  background: rgba(241, 204, 126,.18);
   border-color: var(--rc-cream);
   outline: none;
 }
@@ -1028,7 +1023,7 @@ body.race-active .game-stage { background: transparent; }
   background: rgba(255,255,255,.08);
   border-radius: 999px;
   overflow: hidden;
-  border: 1px solid rgba(228,203,157,.2);
+  border: 1px solid rgba(241, 204, 126,.2);
 }
 .gauge-target {
   position: absolute;
@@ -1066,15 +1061,15 @@ body.race-active .game-stage { background: transparent; }
   font-size: 1.05rem;
   font-weight: 700;
   border-radius: 999px;
-  border: 2px solid var(--rc-energy);
-  background: rgba(229,55,71,.2);
+  border: 2px solid var(--rc-cream);
+  background: rgba(241,204,126,.16);
   color: #fff;
   cursor: pointer;
   user-select: none;
   -webkit-user-select: none;
   touch-action: manipulation;
 }
-.btn-pump:active { background: var(--rc-energy); transform: scale(0.98); }
+.btn-pump:active { background: var(--rc-cream); color: var(--rc-primary); transform: scale(0.98); }
 
 /* Jersey packing scene */
 .packing-stage {
@@ -1089,14 +1084,14 @@ body.race-active .game-stage { background: transparent; }
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 8px;
-  background: linear-gradient(180deg, rgba(229,55,71,0.15), rgba(229,55,71,0.05));
-  border: 2px solid rgba(228,203,157,.3);
+  background: linear-gradient(180deg, rgba(0,42,107,0.55), rgba(0,32,91,0.35));
+  border: 2px solid rgba(241,204,126,.35);
   border-radius: 12px;
   padding: 16px 12px;
 }
 .pocket {
   background: rgba(0,0,0,.25);
-  border: 1px dashed rgba(228,203,157,.35);
+  border: 1px dashed rgba(241, 204, 126,.35);
   border-radius: 8px;
   padding: 10px 6px;
   min-height: 88px;
@@ -1117,7 +1112,7 @@ body.race-active .game-stage { background: transparent; }
   flex-wrap: wrap;
   gap: 6px;
   background: rgba(255,255,255,.04);
-  border: 1px solid rgba(228,203,157,.2);
+  border: 1px solid rgba(241, 204, 126,.2);
   border-radius: 12px;
   padding: 10px;
   min-height: 60px;
@@ -1125,7 +1120,7 @@ body.race-active .game-stage { background: transparent; }
 }
 .pack-chip {
   font-family: inherit;
-  border: 1px solid rgba(228,203,157,.3);
+  border: 1px solid rgba(241, 204, 126,.3);
   border-radius: 10px;
   padding: 4px 6px 4px 4px;
   display: inline-flex;
@@ -1136,15 +1131,15 @@ body.race-active .game-stage { background: transparent; }
   background: rgba(255,255,255,.08);
   transition: transform .12s, background .15s, box-shadow .15s, border-color .15s;
 }
-.pack-chip:hover { background: rgba(228,203,157,.16); }
+.pack-chip:hover { background: rgba(241, 204, 126,.16); }
 .pack-chip:active { transform: scale(0.95); }
 .pack-chip.selected {
   border-color: var(--rc-cream);
-  box-shadow: 0 0 0 2px var(--rc-cream), 0 0 18px rgba(228,203,157,.5);
+  box-shadow: 0 0 0 2px var(--rc-cream), 0 0 18px rgba(241, 204, 126,.5);
   transform: translateY(-2px);
 }
 .pocket.targetable {
-  background: rgba(228,203,157,.18);
+  background: rgba(241, 204, 126,.18);
   border-style: solid;
   border-color: var(--rc-cream);
 }
@@ -1244,7 +1239,7 @@ body.race-active .game-stage { background: transparent; }
   max-width: 360px;
   height: 22px;
   background: rgba(255,255,255,.08);
-  border: 1px solid rgba(228,203,157,.25);
+  border: 1px solid rgba(241, 204, 126,.25);
   border-radius: 999px;
   overflow: hidden;
   margin-top: 6px;
@@ -1385,7 +1380,7 @@ body.race-active .game-stage { background: transparent; }
   min-width: 140px;
 }
 .landmark-card .lm-capture {
-  background: rgba(228, 203, 157, 0.95);
+  background: rgba(241, 204, 126, 0.95);
   color: var(--rc-primary);
 }
 .landmark-card .lm-continue {
@@ -1400,7 +1395,7 @@ body.race-active .game-stage { background: transparent; }
   width: 100%;
   max-width: 620px;
   background: rgba(8,2,8,0.55);
-  border: 1px solid rgba(228,203,157,.3);
+  border: 1px solid rgba(241, 204, 126,.3);
   border-radius: 14px;
   padding: 14px;
   margin-top: 8px;
@@ -1494,7 +1489,7 @@ body.race-active .game-stage { background: transparent; }
   background-size: cover;
   background-position: center;
   border-radius: 14px;
-  border: 1px solid rgba(228,203,157,.2);
+  border: 1px solid rgba(241, 204, 126,.2);
   box-shadow: 0 18px 48px rgba(0,0,0,.5);
   transition: opacity .35s ease, transform .35s ease;
 }
@@ -1695,7 +1690,7 @@ body.race-active .game-stage { background: transparent; }
   align-items: flex-start;
   gap: 2px;
   background: rgba(255,255,255,.06);
-  border: 1px solid rgba(228,203,157,.35);
+  border: 1px solid rgba(241, 204, 126,.35);
   color: #fff;
   border-radius: 14px;
   padding: 14px 18px;
@@ -1707,7 +1702,7 @@ body.race-active .game-stage { background: transparent; }
   min-height: 60px;
 }
 .tactic-btn:hover, .tactic-btn:focus-visible {
-  background: rgba(228,203,157,.18);
+  background: rgba(241, 204, 126,.18);
   transform: translateY(-1px);
   outline: none;
 }
@@ -1735,7 +1730,7 @@ body.race-active .game-stage { background: transparent; }
   margin-left: 10px;
   border-radius: 50%;
   vertical-align: middle;
-  background: conic-gradient(var(--rc-energy) 0deg, rgba(228,203,157,.18) 0);
+  background: conic-gradient(var(--rc-energy) 0deg, rgba(241, 204, 126,.18) 0);
   position: relative;
   transition: background 0.06s linear;
 }
@@ -1771,7 +1766,7 @@ body.race-active .game-stage { background: transparent; }
 .tactic-incoming.show { opacity: 1; transform: translate(-50%, 0); }
 .tactic-incoming.good { background: rgba(25, 135, 84, 0.95); box-shadow: 0 6px 18px rgba(25,135,84,.4); }
 .tactic-incoming.bad  { background: rgba(220, 53, 69, 0.95); }
-.tactic-incoming.ok   { background: rgba(228, 203, 157, 0.95); color: var(--rc-primary); }
+.tactic-incoming.ok   { background: rgba(241, 204, 126, 0.95); color: var(--rc-primary); }
 .tactic-incoming strong { margin-left: 8px; font-weight: 800; }
 
 /* ==========================================================================
@@ -1810,7 +1805,7 @@ body.race-active .game-stage { background: transparent; }
   font-size: .8rem;
   letter-spacing: .25em;
   text-transform: uppercase;
-  color: rgba(228,203,157,.7);
+  color: rgba(241, 204, 126,.7);
 }
 
 .finish-score {
@@ -1842,7 +1837,7 @@ body.race-active .game-stage { background: transparent; }
 }
 .finish-stats .stat {
   background: rgba(255,255,255,.06);
-  border: 1px solid rgba(228,203,157,.2);
+  border: 1px solid rgba(241, 204, 126,.2);
   border-radius: 12px;
   padding: 12px 14px;
   text-align: left;
@@ -1870,8 +1865,8 @@ body.race-active .game-stage { background: transparent; }
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  background: rgba(228,203,157,.15);
-  border: 1px solid rgba(228,203,157,.4);
+  background: rgba(241, 204, 126,.15);
+  border: 1px solid rgba(241, 204, 126,.4);
   border-radius: 999px;
   padding: 8px 18px;
   font-family: var(--font-display);
