@@ -1,0 +1,88 @@
+{
+  "id": "palava",
+  "name": "Pálava",
+  "subtitle": "Vinařský ráj — Valtice → Reistna",
+  "date": "2026-05-16",
+  "start_location": "Valtice, náměstí Svobody",
+  "real": {
+    "long_km": 125,
+    "long_elevation_m": 1450,
+    "short_km": 64,
+    "short_elevation_m": 800
+  },
+  "ingame": {
+    "duration_s": 180,
+    "scaled_distance_units": 1000
+  },
+  "segments": [
+    { "from_pct": 0,    "to_pct": 12,  "label": "Valtice → Lednice",      "gradient": 0,    "kind": "flat" },
+    { "from_pct": 12,   "to_pct": 28,  "label": "Lednice → Mikulov",      "gradient": 1.2,  "kind": "rolling" },
+    { "from_pct": 28,   "to_pct": 42,  "label": "Stúpanie na Děvín",      "gradient": 7.8,  "kind": "climb" },
+    { "from_pct": 42,   "to_pct": 52,  "label": "Zjazd k Novomlýnům",     "gradient": -5.4, "kind": "descent" },
+    { "from_pct": 52,   "to_pct": 68,  "label": "Novomlýnské nádrže",     "gradient": 0.4,  "kind": "flat" },
+    { "from_pct": 68,   "to_pct": 78,  "label": "Tesarova past",          "gradient": 6.2,  "kind": "climb" },
+    { "from_pct": 78,   "to_pct": 88,  "label": "Bořetice → Bulhary",     "gradient": -2.0, "kind": "rolling" },
+    { "from_pct": 88,   "to_pct": 100, "label": "Reistna kolonáda",       "gradient": 8.4,  "kind": "climb" }
+  ],
+  "pickups": [
+    { "pct": 18, "type": "gel"        },
+    { "pct": 32, "type": "jelly"      },
+    { "pct": 45, "type": "bar"        },
+    { "pct": 58, "type": "chews"      },
+    { "pct": 70, "type": "liquid-gel" },
+    { "pct": 82, "type": "gel"        },
+    { "pct": 92, "type": "caffeine"   }
+  ],
+  "tactics": [
+    {
+      "trigger_pct": 22,
+      "context": "Lednice — před prvním stoupákem",
+      "subtext": "Roller přes vinice. Šetříš na Děvín?",
+      "options": [
+        { "id": "attack",  "label": "Tlač do pelotonu",   "hint": "Zabereš pozici",            "cost_energy": 12, "speed_mul": 1.20, "duration_s": 20 },
+        { "id": "draft",   "label": "Drž peloton",        "hint": "Šetří energii",             "cost_energy": -2, "speed_mul": 1.0,  "duration_s": 20 },
+        { "id": "refuel",  "label": "Carbo Gel C2:1PRO",  "hint": "+25 · příprava na Děvín",   "cost_energy": -25,"speed_mul": 0.95, "duration_s": 5  }
+      ]
+    },
+    {
+      "trigger_pct": 38,
+      "context": "Mikulov — Děvín před sebou",
+      "subtext": "Stoupání 7.8 % · 4 km. Jak to dáš?",
+      "options": [
+        { "id": "attack",  "label": "Atak na Děvín",      "hint": "Rychlý, ale drahý",          "cost_energy": 22, "speed_mul": 1.30, "duration_s": 30 },
+        { "id": "draft",   "label": "Drž peloton",        "hint": "Skupinová síla",             "cost_energy": -3, "speed_mul": 1.0,  "duration_s": 30 },
+        { "id": "refuel",  "label": "Carbo Bar C2:1PRO",  "hint": "+35 · pomalý start",         "cost_energy": -35,"speed_mul": 0.90, "duration_s": 4  }
+      ]
+    },
+    {
+      "trigger_pct": 56,
+      "context": "Novomlýnské nádrže — rovinka",
+      "subtext": "Vítr od jihu. Skupinová jízda nebo solo útěk?",
+      "options": [
+        { "id": "attack",  "label": "Solo útěk",          "hint": "Vysoké riziko",              "cost_energy": 18, "speed_mul": 1.25, "duration_s": 25 },
+        { "id": "draft",   "label": "Ve skupině",         "hint": "Kryje tě peloton",           "cost_energy": -4, "speed_mul": 1.0,  "duration_s": 25 },
+        { "id": "refuel",  "label": "Carbo Jelly C2:1PRO","hint": "+30 · rychlé vstřebání",     "cost_energy": -30,"speed_mul": 1.0,  "duration_s": 6  }
+      ]
+    },
+    {
+      "trigger_pct": 78,
+      "context": "Před Tesarovou pastí",
+      "subtext": "Předposlední stoupání. Reistna tě ještě čeká.",
+      "options": [
+        { "id": "attack",  "label": "Sprint na vrch",     "hint": "Strhni peloton",             "cost_energy": 22, "speed_mul": 1.30, "duration_s": 25 },
+        { "id": "draft",   "label": "Drž peloton",        "hint": "Trpělivost na Reistnu",      "cost_energy": -2, "speed_mul": 1.0,  "duration_s": 25 },
+        { "id": "refuel",  "label": "Liquid Gel + Chews", "hint": "+40 · plný balíček",         "cost_energy": -40,"speed_mul": 0.90, "duration_s": 5  }
+      ]
+    },
+    {
+      "trigger_pct": 91,
+      "context": "Reistna kolonáda — finální stoupání",
+      "subtext": "8.4 % · 1 km. Tvůj poslední moment.",
+      "options": [
+        { "id": "attack",  "label": "All-in na vrchol",   "hint": "Vyhraješ nebo prohraješ",    "cost_energy": 28, "speed_mul": 1.40, "duration_s": 20 },
+        { "id": "draft",   "label": "Stabilní rytmus",    "hint": "Dojedeš v peletonu",         "cost_energy": 0,  "speed_mul": 1.05, "duration_s": 20 },
+        { "id": "refuel",  "label": "Carbo Gel — Caffeine","hint": "+25 · ostrá káva",          "cost_energy": -25,"speed_mul": 1.10, "duration_s": 8  }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,548 @@
+{
+  "_": "Manifest for Gemini Nano Banana asset generation — ATT Investments × Enervit, MČR & MSR Silnice 2026 Jeseník. Each entry → public/assets/scenes/<category>/<id>.png. styleAnchor appended to every prompt.",
+  "styleAnchor": "Flat vector illustration in the style of Martin Paseka and the @road__classics Instagram artwork: ATT Investments pro cycling team palette — deep navy blue (#00205b primary, #001230 darks, #002a6b mids, #1a4a9c highlights) with warm gold accents (#f1cc7e, #d4a84a) and cream highlights (#f0e4c8) for skin and props. Charming cozy character vignettes, rounded soft shapes, 3/4 isometric perspective, subtle dotted grid background texture, dark almost-black navy setting, dreamlike Jeseníky mountain mood at dusk — spruce forests, granite ridges, drifting mist. Cinematic composition, balanced negative space.",
+  "negativePrompt": "no photorealism, no 3D rendering, no harsh shadows, no realistic skin tones, no bright green grass (use deep teal-navy ground), no bright daytime blue sky (use deep navy dusk sky), no text, no watermark, no logos.",
+  "defaultModel": "gemini-2.5-flash-image",
+  "assets": [
+    {
+      "id": "jesenik-morning",
+      "category": "landscapes",
+      "aspect": "16:9",
+      "prompt": "Aerial 3/4 view of Masaryk Square (Masarykovo náměstí) in Jeseník spa town at early morning, historic town hall tower and arcaded houses, a single warm street lamp glowing, two cyclists in racing kits walking with bikes across the cobblestones, the wooded Jeseníky mountains rising behind the rooftops, atmospheric mist between the spruce slopes"
+    },
+    {
+      "id": "lipova-lazne",
+      "category": "landscapes",
+      "aspect": "16:9",
+      "prompt": "Top-down 3/4 view of a winding mountain road weaving out of the village of Lipová-lázně, timber spa cottages with steep roofs, spruce forest closing in on both sides, a small river running parallel to the road, foothills of the Jeseníky ridge on the horizon"
+    },
+    {
+      "id": "ramzova-village",
+      "category": "landscapes",
+      "aspect": "16:9",
+      "prompt": "Aerial 3/4 view of the small mountain saddle village of Ramzová nestled on a forested hillside, a chairlift line climbing the slope behind, tile-roofed chalets, a cycling road switchbacking up toward the pass in late afternoon golden light, soft atmospheric mood"
+    },
+    {
+      "id": "ramzova-climb",
+      "category": "landscapes",
+      "aspect": "9:16",
+      "prompt": "Steep cycling climb up to the Ramzová mountain pass, narrow road winding up through dense spruce forest with granite boulders, a lonely solo cyclist in navy-and-gold ATT jersey leaning into the climb out of the saddle, valley far below"
+    },
+    {
+      "id": "cervenohorske-sedlo",
+      "category": "landscapes",
+      "aspect": "16:9",
+      "prompt": "High exposed mountain-pass road at Červenohorské sedlo crossing an open ridge between rounded forested peaks, a peloton of 5 cyclists riding in a tight line, wind bending the mountain grasses, dramatic dusk sky over the Jeseníky"
+    },
+    {
+      "id": "praded-vista",
+      "category": "landscapes",
+      "aspect": "9:16",
+      "prompt": "Dramatic mountain climb with the iconic Praděd transmitter tower rising on the highest peak of the Jeseníky in the distance, cycling road snaking up through alpine meadow and stunted spruce, a cyclist visible mid-climb, mist drifting across the summit"
+    },
+    {
+      "id": "jesenik-finish",
+      "category": "landscapes",
+      "aspect": "16:9",
+      "prompt": "Triumphant finish on Masaryk Square in Jeseník at sunset, a cyclist with arms raised crossing a cream finish-line tape, historic town-hall tower and arcaded facades framing the road, crowd barriers and cheering fans lining the cobblestones, the dark Jeseníky mountains glowing behind"
+    },
+    {
+      "id": "jesenik-overview-map",
+      "category": "landscapes",
+      "aspect": "1:1",
+      "prompt": "Decorative top-down illustrated map of the Jeseníky mountains race region, forested ridges and rounded peaks, Jeseník and Lipová-lázně marked as little towns, Ramzová as a stylized saddle pass, the Praděd tower as an icon on the highest peak, a dotted route path tracing the cycling course, compass rose, ornamental mountain border"
+    },
+    {
+      "id": "discipline-casovka",
+      "category": "landscapes",
+      "aspect": "4:3",
+      "prompt": "Aerial 3/4 view of an individual time-trial start ramp in the town of Uničov at midday, a lone cyclist in aero tuck on a time-trial bike speeding along a flat closed road lined with crowd barriers and bunting, flat Haná farmland stretching away. Empty of other riders"
+    },
+    {
+      "id": "discipline-juniori",
+      "category": "landscapes",
+      "aspect": "4:3",
+      "prompt": "A bunch of young junior cyclists in colourful national kits racing together on a rolling country road near Jeseník, forested hills behind, energetic youthful mood, dusk light. No text"
+    },
+
+    {
+      "id": "kitchen-breakfast",
+      "category": "prerace",
+      "aspect": "4:3",
+      "prompt": "Cozy mountain-cottage morning kitchen seen 3/4 from above, wooden table with three breakfast options laid out: scrambled eggs with bread, oatmeal porridge with fruit, and a buttery croissant with espresso. A navy-and-gold cycling jersey draped over a chair, sun streaming through curtains, ceramic plates. Inviting and warm"
+    },
+    {
+      "id": "garage-bike-check",
+      "category": "prerace",
+      "aspect": "4:3",
+      "prompt": "Home garage workshop seen 3/4, road bicycle on a maintenance stand, tire pump, chain lube, tools on a workbench, helmet hanging, soft morning light through the open garage door, a friendly dog watching from the corner"
+    },
+    {
+      "id": "jersey-packing",
+      "category": "prerace",
+      "aspect": "1:1",
+      "prompt": "Top-down view of a flat-laid navy-blue and gold ATT cycling jersey with three back pockets clearly visible, beside it laid out: an Enervit Carbo Gel C2:1PRO sachet, an Enervit Carbo Bar C2:1PRO, an Enervit Isocarb C2:1PRO drink-mix sachet, energy chews. Clean composition, soft drop shadows"
+    },
+    {
+      "id": "drive-to-start",
+      "category": "prerace",
+      "aspect": "16:9",
+      "prompt": "Top-down illustrated map of the Jeseníky foothills at dawn with a winding mountain road heading toward Jeseník, a small car icon with bicycles on the roof rack moving along the route, spruce forest patches, illustrated distance markers"
+    },
+    {
+      "id": "start-line-briefing",
+      "category": "prerace",
+      "aspect": "16:9",
+      "prompt": "Pre-race briefing scene on Masaryk Square in Jeseník, hundreds of cyclists in colourful jerseys gathered behind a start banner (no text), event flags fluttering, a dog mascot weaving among riders, historic town-hall tower in the background, sunrise breaking over the mountains"
+    },
+
+    {
+      "id": "cyclist-player-front",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side view sprite of a focused road cyclist in a navy-blue and gold ATT pro team racing jersey leaning into the bars in racing tuck position, aero helmet, sunglasses, white cycling shoes, transparent background, character design, no text"
+    },
+    {
+      "id": "cyclist-player-topdown",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Top-down view of a single road cyclist as seen from directly above — navy-blue ATT jersey with a gold stripe, aero helmet (oval seen from top), two thin foreshortened wheel ovals, arms reaching forward to drop bars. Compact sprite-icon composition, slight 3/4 angle suggesting forward motion",
+      "style": "Clean character sprite illustration, single isolated subject ONLY, plain transparent or pure off-white background. No road, no scenery, no landscape, no other riders, no buildings. Cyclist viewed from a high REAR-three-quarter angle: camera positioned behind and above the rider, we see the BACK of the helmet and the back of the jersey, the rider is facing AWAY from the viewer riding INTO the scene up-the-frame. Rear wheel toward bottom of frame, front wheel further away at top of frame. The cyclist must be the entire focus, centered. Navy-blue and gold ATT team kit."
+    },
+    {
+      "id": "peloton-rider-1",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Rear-three-quarter view of a single road cyclist from behind and slightly above — red-and-white Czech national champion jersey, aero helmet, thin foreshortened wheel ovals, arms reaching forward to drop bars. Compact sprite icon",
+      "style": "Clean character sprite illustration, single isolated subject ONLY, plain transparent or pure off-white background. No road, no scenery, no landscape, no other riders, no buildings. Cyclist viewed from a high REAR-three-quarter angle: camera positioned behind and above the rider, we see the BACK of the helmet and the back of the jersey, riding INTO the scene up-the-frame. Rear wheel toward bottom of frame, front wheel further away at top."
+    },
+    {
+      "id": "peloton-rider-2",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Rear-three-quarter view of a single road cyclist from behind and slightly above — blue-and-white Slovak national kit, aero helmet, thin foreshortened wheel ovals, arms reaching forward. Compact sprite icon",
+      "style": "Clean character sprite illustration, single isolated subject ONLY, plain transparent or pure off-white background. No road, no scenery, no landscape, no other riders, no buildings. Cyclist viewed from a high REAR-three-quarter angle: we see the BACK of the helmet and jersey, riding INTO the scene up-the-frame."
+    },
+    {
+      "id": "peloton-rider-3",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Rear-three-quarter view of a single road cyclist from behind and slightly above — teal-and-orange trade-team jersey, aero helmet, thin foreshortened wheel ovals, arms reaching forward. Compact sprite icon",
+      "style": "Clean character sprite illustration, single isolated subject ONLY, plain transparent or pure off-white background. No road, no scenery, no landscape, no other riders, no buildings. Cyclist viewed from a high REAR-three-quarter angle: we see the BACK of the helmet and jersey, riding INTO the scene up-the-frame."
+    },
+    {
+      "id": "peloton-rider-4",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Rear-three-quarter view of a single road cyclist from behind and slightly above — black-and-lime trade-team jersey, aero helmet, thin foreshortened wheel ovals, arms reaching forward. Compact sprite icon",
+      "style": "Clean character sprite illustration, single isolated subject ONLY, plain transparent or pure off-white background. No road, no scenery, no landscape, no other riders, no buildings. Cyclist viewed from a high REAR-three-quarter angle: we see the BACK of the helmet and jersey, riding INTO the scene up-the-frame."
+    },
+    {
+      "id": "mechanic",
+      "category": "characters",
+      "aspect": "3:4",
+      "prompt": "A bike mechanic character standing in front of a small ATT team repair tent, holding a wrench, navy work apron with gold trim, transparent background"
+    },
+    {
+      "id": "dog-mascot",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Cute pale beige labrador retriever sitting and panting cheerfully wearing a small navy-and-gold bandana, friendly team-mascot expression, transparent background"
+    },
+
+    {
+      "id": "rider-vanicek",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a lean Czech road cyclist (Šimon Vaníček, cyclo-cross all-rounder), light skin, short brown hair, navy-blue and gold ATT pro team jersey, aero helmet pushed up, sunglasses on the helmet, confident smile, arms folded, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-pospisil",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a sturdy Czech domestique cyclist (Jiří Pospíšil), light skin, stubble, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, calm reliable expression, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-neuman",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of an experienced Czech elite cyclist (Dominik Neuman), light skin, short dark hair greying at temples, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, seasoned veteran look, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-banaszek",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a powerful Polish sprinter (Norbert Banaszek), broad shoulders, light skin, blond cropped hair, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, explosive confident stance, transparent background, character design"
+    },
+    {
+      "id": "rider-riman",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a Czech elite cyclist (Jakub Říman), light skin, medium brown hair, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, focused expression, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-boguslawski",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a Polish sprinter (Marceli Bogusławski), athletic build, light skin, dark short hair, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, fast-twitch energetic look, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-barta",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a young Czech rising-talent cyclist (Martin Bárta), youthful light skin, light brown hair, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, eager fresh expression, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-pekala",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a Polish stage-race contender (Piotr Pękala), lean climber build, light skin, dark hair, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, determined expression, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-reha",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a Czech climber (Filip Řeha), very lean lightweight mountain build, light skin, short brown hair, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, wiry intense look, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-voltr",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a Czech all-rounder (Martin Voltr), balanced athletic build, light skin, medium brown hair, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, versatile confident look, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-budzinski",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a Polish elite cyclist (Tomasz Budziński), solid build, light skin, short brown hair, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, steady expression, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-pomorski",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a Polish classics sprinter (Michał Pomorski), muscular build, light skin, dark hair, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, tough cobbled-classics look, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-gajdulewicz",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a young Polish U23 cyclist (Mateusz Gajdulewicz), youthful light skin, light brown hair, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, ambitious young look, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-pawlak",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a Polish crosswind specialist (Tobiasz Pawlak), powerful rouleur build, light skin, dark cropped hair, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, gritty echelon look, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-heming",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a German road rider (Miká Heming), athletic build, light skin, blond hair, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, composed expression, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-monti",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of an Italian GC stage-race rider (Alberto Carlo Monti), lean climber build, olive skin, dark wavy hair, navy-blue and gold ATT pro team jersey, aero helmet, sunglasses, elegant grand-tour look, standing pose, transparent background, character design"
+    },
+    {
+      "id": "rider-kral",
+      "category": "characters",
+      "aspect": "1:1",
+      "prompt": "Side-view portrait sprite of a Czech junior emerging-talent cyclist (Kryštof Král), very youthful light skin, light brown hair, navy-blue and gold ATT pro team jersey, aero helmet slightly too big, sunglasses, bright hopeful expression, standing pose, transparent background, character design"
+    },
+
+    {
+      "id": "station-gel",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "Top-down 3/4 view of a small Enervit-red feed-station tent on a small patch of mountain grass, folding table in front with rows of orange gel sachets, one volunteer in red. Compact sprite, looking down from above-front",
+      "style": "Single isolated tent illustration, plain off-white or pure transparent background. No road, no full landscape, no other props beyond the tent + volunteer + table. Subject must fit cleanly in a 1:1 frame for use as a game sprite."
+    },
+    {
+      "id": "station-bar",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "Top-down 3/4 view of a small Enervit-red feed-station tent on a small patch of mountain grass, folding table in front with stacked green Carbo Bar wrappers, one volunteer in red. Compact sprite",
+      "style": "Single isolated tent illustration, plain off-white or pure transparent background. No road, no full landscape, no other props beyond the tent + volunteer + table. Subject must fit cleanly in a 1:1 frame for use as a game sprite."
+    },
+    {
+      "id": "station-drink",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "Top-down 3/4 view of a small Enervit-red feed-station tent on a small patch of mountain grass, folding table in front with rows of blue Isocarb drink sachets, one volunteer in red holding a bottle. Compact sprite",
+      "style": "Single isolated tent illustration, plain off-white or pure transparent background. No road, no full landscape, no other props beyond the tent + volunteer + table. Subject must fit cleanly in a 1:1 frame for use as a game sprite."
+    },
+    {
+      "id": "station-jelly",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "Top-down 3/4 view of a small Enervit-red feed-station tent on a small patch of mountain grass, folding table in front with an open box of orange tropical Carbo Jelly sachets, one volunteer in red handing one out. Compact sprite",
+      "style": "Single isolated tent illustration, plain off-white or pure transparent background. No road, no full landscape, no other props beyond the tent + volunteer + table. Subject must fit cleanly in a 1:1 frame for use as a game sprite."
+    },
+    {
+      "id": "station-chews",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "Top-down 3/4 view of a small Enervit-red feed-station tent on a small patch of mountain grass, folding table in front with packets of pink-cream Carbo Chews gummy pouches, one volunteer in red. Compact sprite",
+      "style": "Single isolated tent illustration, plain off-white or pure transparent background. No road, no full landscape, no other props beyond the tent + volunteer + table. Subject must fit cleanly in a 1:1 frame for use as a game sprite."
+    },
+    {
+      "id": "station-caffeine",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "Top-down 3/4 view of a small Enervit-red feed-station tent on a small patch of mountain grass, folding table in front with rows of dark espresso-brown caffeine gel sachets and a subtle steaming coffee cup, one volunteer in red. Compact sprite",
+      "style": "Single isolated tent illustration, plain off-white or pure transparent background. No road, no full landscape, no other props beyond the tent + volunteer + table. Subject must fit cleanly in a 1:1 frame for use as a game sprite."
+    },
+
+    {
+      "id": "item-gel-sachet",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "A single Enervit Carbo Gel sachet — narrow tear-top foil pouch, vivid orange front, thin cream label stripe across the middle (no readable lettering). Slight 3/4 angle, soft drop shadow",
+      "style": "Clean product-icon illustration on a plain off-white background. Single isolated subject only. No landscape, no characters, no people, no buildings, no scenery. Just the product on neutral background. Subtle vector shading, glossy highlight."
+    },
+    {
+      "id": "item-bar-wrapped",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "A single Enervit Carbo Bar — flat rectangular wrapped energy bar with a deep forest-green foil wrapper, small cream label band (no readable letters). Slight 3/4 angle",
+      "style": "Clean product-icon illustration on a plain off-white background. Single isolated subject only. No landscape, no characters, no people, no buildings, no scenery. Just the product on neutral background. Subtle vector shading, soft drop shadow."
+    },
+    {
+      "id": "item-isocarb-sachet",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "A single Enervit Isocarb drink-mix sachet — narrow rectangular foil pouch, deep cobalt blue front, thin cream label stripe (no readable letters). Slight 3/4 angle, soft drop shadow",
+      "style": "Clean product-icon illustration on a plain off-white background. Single isolated subject only. No landscape, no characters, no people, no buildings, no scenery. Just the product on neutral background. Subtle vector shading, glossy highlight."
+    },
+    {
+      "id": "item-jelly",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "A single Enervit Carbo Jelly Tropical sachet — flexible pouch in vivid mango-orange-yellow gradient with a cream label stripe (no readable letters). Slight 3/4 angle showing thickness, soft drop shadow",
+      "style": "Clean product-icon illustration on a plain off-white background. Single isolated subject only. No landscape, no characters, no people, no buildings, no scenery. Just the product on neutral background. Subtle vector shading, glossy highlight."
+    },
+    {
+      "id": "item-chews",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "A small open packet of Enervit Carbo Chews gummies — flat foil pouch in cream colour with a raspberry-pink accent stripe, three small pink-red gummy candies spilling out. Slight 3/4 angle, soft drop shadow",
+      "style": "Clean product-icon illustration on a plain off-white background. Single isolated subject only. No landscape, no characters, no people, no buildings, no scenery. Just the product on neutral background. Subtle vector shading."
+    },
+    {
+      "id": "item-liquid-gel",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "A single Enervit Liquid Gel 60 ml bottle — small slim screw-top sport flask, deep amber translucent body showing gel inside, cream cap. 3/4 angle, glossy highlight, soft drop shadow",
+      "style": "Clean product-icon illustration on a plain off-white background. Single isolated subject only. No landscape, no characters, no people, no buildings. Just the product on neutral background. Glossy realistic vector shading."
+    },
+    {
+      "id": "item-bidon",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "A single cycling water bottle (bidon) standing upright, deep navy-blue plastic body with a gold band, cream pop-up cap, slim athletic curves (no readable letters). 3/4 angle, glossy highlight, soft drop shadow",
+      "style": "Clean product-icon illustration on a plain off-white background. Single isolated subject only. No landscape, no characters, no people, no buildings, no scenery. Just the product on neutral background."
+    },
+
+    {
+      "id": "bike-wheel",
+      "category": "prerace",
+      "aspect": "1:1",
+      "prompt": "Close-up of a single road-bike front wheel — thin radial spokes, deep-section carbon rim with subtle anodized sheen, smooth black tire, polished hub. 3/4 angle showing depth",
+      "style": "Clean product-icon illustration on a plain off-white background. Single isolated subject only. No landscape, no characters, no people, no garage interior, no buildings. Just the wheel on neutral background. Soft directional light, subtle drop shadow."
+    },
+    {
+      "id": "bike-chain",
+      "category": "prerace",
+      "aspect": "1:1",
+      "prompt": "Close-up of a road-bike rear drivetrain — silver cassette gears with stepped rings and an oily metallic chain wrapping around them. 3/4 angle, gear teeth and chain links clearly visible",
+      "style": "Clean product-icon illustration on a plain off-white background. Single isolated subject only. No landscape, no characters, no people, no buildings. Just the drivetrain on neutral background. Mechanical accuracy, subtle drop shadow."
+    },
+    {
+      "id": "food-eggs",
+      "category": "prerace",
+      "aspect": "1:1",
+      "prompt": "A single plate of scrambled eggs with two slices of dark rye bread, sprig of chives, pat of butter, small cup of black coffee on the side. Single hero subject seen 3/4 from above, isolated on a clean cream background",
+      "style": "Clean flat-vector product-icon illustration, single isolated subject only, plain pale-cream background, no landscape, no characters, no people, no scenery. Soft warm lighting, gentle drop shadow, charming editorial style. Warm cream + navy + gold accent palette."
+    },
+    {
+      "id": "food-oats",
+      "category": "prerace",
+      "aspect": "1:1",
+      "prompt": "A bowl of warm oatmeal porridge topped with sliced banana, raspberries, honey drizzle, seeds. Wooden spoon resting on rim. Single hero subject seen 3/4 from above, isolated on a clean cream background",
+      "style": "Clean flat-vector product-icon illustration, single isolated subject only, plain pale-cream background, no landscape, no characters, no people, no scenery. Soft warm lighting, gentle drop shadow, charming editorial style. Warm cream + navy + gold accent palette."
+    },
+    {
+      "id": "food-croissant",
+      "category": "prerace",
+      "aspect": "1:1",
+      "prompt": "A flaky golden croissant on a small ceramic saucer next to a small espresso cup with crema. Single hero subject seen 3/4 from above, isolated on a clean cream background",
+      "style": "Clean flat-vector product-icon illustration, single isolated subject only, plain pale-cream background, no landscape, no characters, no people, no scenery. Soft warm lighting, gentle drop shadow, charming editorial style. Warm cream + navy + gold accent palette."
+    },
+    {
+      "id": "food-banana",
+      "category": "prerace",
+      "aspect": "1:1",
+      "prompt": "A single ripe yellow banana with a small black tip on the stem, slight curve, soft 3/4 angle, gentle highlight on the top edge",
+      "style": "Clean product-icon illustration on a plain off-white background. Single isolated subject only. No landscape, no characters, no people, no buildings, no other fruit. Just the banana on neutral background. Soft drop shadow."
+    },
+
+    {
+      "id": "event-flat-tire",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "A cyclist crouched on a mountain roadside with a flat front tire, holding a CO2 cartridge, spare inner tube on the ground, frustrated expression, spruce forest behind"
+    },
+    {
+      "id": "event-gel-grab",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Action shot of a cyclist mid-ride reaching out with their right hand to grab an Enervit gel from a feed-station volunteer, both blurring slightly with motion, illustrated style"
+    },
+    {
+      "id": "event-attack",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "A peloton breaking apart on a steep mountain climb, one cyclist in navy-and-gold ATT jersey out of the saddle attacking off the front, others straining behind, dramatic perspective"
+    },
+    {
+      "id": "event-fan-cheer",
+      "category": "events",
+      "aspect": "4:3",
+      "prompt": "Local mountain fans cheering on a roadside, an old man in a flat cap ringing a cowbell, a child waving a small flag, a dog with a bandana, spruce forest behind"
+    },
+
+    {
+      "id": "finish-line",
+      "category": "finish",
+      "aspect": "16:9",
+      "prompt": "Cyclist crossing a finish-line tape on Masaryk Square in Jeseník at sunset, arms raised, peloton coming up behind, cream finish-line ribbon stretched across, historic town-hall tower framing the shot"
+    },
+    {
+      "id": "finish-celebration",
+      "category": "finish",
+      "aspect": "16:9",
+      "prompt": "Joyful post-race celebration on the podium at Jeseník town square at sunset. A group of cyclists in navy-and-gold ATT kit raising their arms in triumph holding bottles. A pale labrador with a team bandana sits among them. Sunset glow behind the town-hall tower. Festive triumphant mood, illustrated character vignette"
+    },
+
+    {
+      "id": "recovery-prosecco",
+      "category": "finish",
+      "aspect": "1:1",
+      "prompt": "A tall champagne flute filled with sparkling pale-gold prosecco, fine bubbles rising, gentle glow",
+      "style": "Clean product-icon illustration on plain off-white background. Single isolated subject only. No people, no scenery. Soft drop shadow. Charming editorial line-art with flat fills."
+    },
+    {
+      "id": "recovery-beer",
+      "category": "finish",
+      "aspect": "1:1",
+      "prompt": "A pilsner glass of Czech lager, golden amber liquid, three fingers of dense white foam head, condensation droplets on the side",
+      "style": "Clean product-icon illustration on plain off-white background. Single isolated subject only. No people, no scenery. Soft drop shadow. Charming editorial line-art with flat fills."
+    },
+    {
+      "id": "recovery-r2",
+      "category": "finish",
+      "aspect": "1:1",
+      "prompt": "A single Enervit R2 Recovery drink shaker bottle — slim athletic shape, deep navy-blue body with a gold band and cream cap (no readable lettering). 3/4 angle, glossy highlight",
+      "style": "Clean product-icon illustration on plain off-white background. Single isolated subject only. No people, no scenery. Soft drop shadow."
+    },
+
+    {
+      "id": "afterparty-cellar",
+      "category": "finish",
+      "aspect": "16:9",
+      "prompt": "Cozy mountain-chalet common room at night seen 3/4 from a low angle — timber-beamed ceiling, a stone fireplace glowing, a long wooden table with candles, three or four cyclists in casual evening wear gathered around with drinks, a dog resting under the table"
+    },
+    {
+      "id": "afterparty-music",
+      "category": "finish",
+      "aspect": "16:9",
+      "prompt": "Cyclists relaxing under string lights on a mountain spa-town terrace at dusk — a small folk band on a tiny stage, accordion and guitar, forested ridges and chalet silhouettes in the distance, warm amber lantern glow, joyful relaxed mood"
+    },
+    {
+      "id": "afterparty-cheers",
+      "category": "finish",
+      "aspect": "16:9",
+      "prompt": "Close-up tabletop scene from above — five hands raising glasses in a toast, the glasses converging in the centre of the frame, warm candlelight, rustic wooden table, a navy team cap and a bidon on the side"
+    },
+    {
+      "id": "afterparty-stars",
+      "category": "finish",
+      "aspect": "16:9",
+      "prompt": "End-of-day scene — a single cyclist sitting on a stone bench at a Jeseníky mountain overlook at midnight, a drink in hand, looking out over the dark forested ridges under a starry sky with the Milky Way faintly visible. Quiet, contemplative"
+    },
+
+    {
+      "id": "map-pin-station",
+      "category": "map",
+      "aspect": "1:1",
+      "prompt": "A simple flat illustrated map pin in Enervit red with a small white tent symbol inside, no text, transparent background"
+    },
+    {
+      "id": "map-pin-tactic",
+      "category": "map",
+      "aspect": "1:1",
+      "prompt": "A flat illustrated decision-point map marker, cream circle with a navy-blue question mark, transparent background"
+    },
+    {
+      "id": "map-rc-badge",
+      "category": "map",
+      "aspect": "1:1",
+      "prompt": "Decorative round team badge in gold on deep navy, a stylized mountain-peak and bicycle motif inside an ornamental round border, no text, transparent background"
+    },
+    {
+      "id": "achievement-attacker",
+      "category": "map",
+      "aspect": "1:1",
+      "prompt": "Achievement badge in cream and navy with gold trim: a stylized lightning bolt over a cyclist silhouette, ornamental ribbon, no text, transparent background"
+    },
+    {
+      "id": "achievement-tempar",
+      "category": "map",
+      "aspect": "1:1",
+      "prompt": "Achievement badge in cream and navy with gold trim: a stopwatch over a steady-pace cyclist silhouette, ornamental ribbon, no text, transparent background"
+    },
+    {
+      "id": "achievement-fueler",
+      "category": "map",
+      "aspect": "1:1",
+      "prompt": "Achievement badge in cream and navy with gold trim: an Enervit gel sachet icon centered, ornamental ribbon, no text, transparent background"
+    },
+    {
+      "id": "achievement-taktik",
+      "category": "map",
+      "aspect": "1:1",
+      "prompt": "Achievement badge in cream and navy with gold trim: a chess knight piece with a cyclist motif, ornamental ribbon, no text, transparent background"
+    },
+
+    {
+      "id": "cafe-pavlov",
+      "category": "stations",
+      "aspect": "16:9",
+      "prompt": "Roadside mountain-village café terrace at midday — small timber cottage with a striped awning, four wooden tables under tree shade, a chalkboard menu, two cyclists in lycra leaning their bikes against a fence and stretching, an older waiter in an apron carrying a tray, forested Jeseníky slopes rolling down behind. Inviting break-from-the-race atmosphere"
+    },
+    {
+      "id": "drink-espresso",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "A single small white porcelain espresso cup on a tiny saucer with one sugar cube and a small spoon, dense espresso crema visible. Slight 3/4 angle from above-front, soft drop shadow",
+      "style": "Clean product-icon illustration on plain off-white background. Single isolated subject only. No people, no scenery, no landscape. Soft drop shadow."
+    },
+    {
+      "id": "drink-cappuccino",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "A single white porcelain cup of cappuccino with a delicate latte-art rosetta pattern in the foam, on a saucer with a small spoon. Slight 3/4 angle from above-front, soft drop shadow",
+      "style": "Clean product-icon illustration on plain off-white background. Single isolated subject only. No people, no scenery, no landscape. Soft drop shadow."
+    },
+    {
+      "id": "pastry-kolac",
+      "category": "stations",
+      "aspect": "1:1",
+      "prompt": "A single Moravian-Silesian koláček (small round pastry) — pale-cream sweet dough base topped with a swirl of plum jam, sprinkled with poppy seeds and streusel crumb. Seen 3/4 from above on a small ceramic plate. Soft drop shadow",
+      "style": "Clean product-icon illustration on plain off-white background. Single isolated subject only. No people, no scenery, no landscape. Soft drop shadow."
+    }
+  ]
+}

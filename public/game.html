@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#00112e" />
+  <title>MČR & MSR Silnice 2026 Jeseník — ATT Investments × Enervit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,700;9..144,800&display=swap" />
+  <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css" />
+  <link rel="stylesheet" href="/css/styles.css" />
+  <link rel="icon" href="/assets/logos/att_investments_logo.svg" type="image/svg+xml" />
+  <script src="https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+</head>
+<body class="game">
+
+  <div class="game-stage">
+
+    <header class="hud-top">
+      <div class="timer-block">
+        <div class="timer" id="hud-timer">00:00.00</div>
+        <div class="timer-sub"><span id="hud-speed">0</span> km/h <span class="score-pop" id="hud-score">0</span></div>
+      </div>
+      <div class="profile-mini" id="hud-profile" aria-label="Výškový profil tratu">
+        <svg viewBox="0 0 100 30" preserveAspectRatio="none" id="profile-svg">
+          <path d="M0,28 L0,28" stroke="rgba(241,204,126,0.6)" fill="rgba(241,204,126,0.18)" stroke-width="0.6" />
+        </svg>
+        <div class="pos-marker" id="pos-marker"></div>
+      </div>
+      <div class="name-block">
+        <div class="monument-name" id="hud-monument">Jeseník</div>
+        <div class="name-sub"><span id="hud-distance">0.0</span> / <span id="hud-distance-total">52</span> km</div>
+      </div>
+    </header>
+
+    <canvas id="game-canvas"></canvas>
+    <div id="race-map" aria-hidden="true"></div>
+
+    <div class="kbd-hint">
+      <span class="desktop"><kbd>← →</kbd> řízení · <kbd>mezerník</kbd> boost</span>
+      <span class="mobile">Nakloň telefon ↔ · prst uprostřed = boost</span>
+    </div>
+
+    <footer class="hud-bottom">
+      <div class="gauge">
+        <div class="label">Energie</div>
+        <div class="value" id="hud-energy">100</div>
+        <div class="bar" id="energy-bar"><span style="width:100%"></span></div>
+      </div>
+      <div class="gauge">
+        <div class="label">Kadence</div>
+        <div class="value"><span id="hud-cadence">0</span> <small style="font-size:.7em;opacity:.6">RPM</small></div>
+        <div class="cadence-zones" id="cadence-zones" data-zone="low">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <div class="segment-banner" id="segment-banner" aria-live="polite"></div>
+  <div class="tactic-incoming" id="tactic-incoming"></div>
+
+  <div class="tactic-modal" id="tactic-modal" role="dialog" aria-modal="true" aria-label="Taktické rozhodnutie">
+    <div class="ctx" id="tactic-ctx">Rozhodnutie</div>
+    <h3 id="tactic-title">…</h3>
+    <p class="sub" id="tactic-sub"></p>
+    <div class="tactic-options" id="tactic-options"></div>
+    <div class="tactic-countdown">
+      <span id="tactic-counter">7</span>
+      <span class="ring"></span>
+    </div>
+  </div>
+
+  <div class="finish-modal" id="finish-modal" role="dialog" aria-modal="true" aria-label="Cieľ dosiahnutý">
+    <div class="stamp">Cíl · Masarykovo náměstí</div>
+    <h2 class="ribbon" id="finish-ribbon">Jeseník dokončen</h2>
+    <div class="finish-score">
+      <span id="finish-score">0</span>
+      <small>Skóre</small>
+    </div>
+    <div class="finish-style" id="finish-style">
+      <span class="glyph" id="finish-style-glyph">★</span>
+      <span id="finish-style-label">Tempař</span>
+    </div>
+    <div class="finish-stats">
+      <div class="stat">
+        <div class="lab">Čas</div>
+        <div class="val" id="finish-time">00:00</div>
+        <div class="sub" id="finish-time-sub"></div>
+      </div>
+      <div class="stat">
+        <div class="lab">Energie</div>
+        <div class="val" id="finish-energy">0 / 100</div>
+        <div class="sub" id="finish-energy-sub">Závěrečný stav</div>
+      </div>
+      <div class="stat">
+        <div class="lab">Enervit sběry</div>
+        <div class="val" id="finish-pickups">0 / 6</div>
+        <div class="sub">Občerstvovačky</div>
+      </div>
+      <div class="stat">
+        <div class="lab">Vzdálenost</div>
+        <div class="val" id="finish-distance">52 km</div>
+        <div class="sub">Jeseník · silnice</div>
+      </div>
+    </div>
+    <div class="finish-pb" id="finish-pb"></div>
+    <div class="finish-actions">
+      <button type="button" class="btn btn-primary" id="finish-continue">Pokračuj večer →</button>
+      <button type="button" class="btn btn-ghost" id="finish-share">Sdílej</button>
+      <button type="button" class="btn btn-ghost" id="finish-replay">Hraj znovu</button>
+      <a href="/" class="btn btn-secondary">Zpět na šampionát</a>
+    </div>
+  </div>
+
+  <div class="confetti" id="confetti" aria-hidden="true"></div>
+
+  <div class="tap-zone" id="tap-zone" aria-hidden="true"></div>
+
+  <!-- Scene system: must register BEFORE engine.js so engine sees rcScenes -->
+  <script src="/js/analytics.js" defer></script>
+  <script src="/js/game/scene-machine.js" defer></script>
+  <script src="/js/game/sprite-renderer.js" defer></script>
+  <script src="/js/game/input.js" defer></script>
+  <script src="/js/game/ui.js" defer></script>
+  <script src="/js/game/monument.js" defer></script>
+  <script src="/js/game/pickups.js" defer></script>
+  <script src="/js/game/tactics.js" defer></script>
+  <script src="/js/game/landmarks.js" defer></script>
+  <script src="/js/game/finish.js" defer></script>
+
+  <!-- Scenes -->
+  <script src="/js/game/scenes/intro.js" defer></script>
+  <script src="/js/game/scenes/rider-select.js" defer></script>
+  <script src="/js/game/scenes/map.js" defer></script>
+  <script src="/js/game/scenes/breakfast.js" defer></script>
+  <script src="/js/game/scenes/garage.js" defer></script>
+  <script src="/js/game/scenes/bidon.js" defer></script>
+  <script src="/js/game/scenes/packing.js" defer></script>
+  <script src="/js/game/scenes/drive.js" defer></script>
+  <script src="/js/game/scenes/race.js" defer></script>
+  <script src="/js/game/scenes/cafe.js" defer></script>
+  <script src="/js/game/scenes/recovery.js" defer></script>
+  <script src="/js/game/scenes/afterparty.js" defer></script>
+
+  <!-- Engine + bootstrap last so all scenes are registered when scene loop starts -->
+  <script src="/js/game/engine.js" defer></script>
+  <script src="/js/game/scenes-bootstrap.js" defer></script>
+</body>
+</html>
