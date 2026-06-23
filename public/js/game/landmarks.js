@@ -80,7 +80,7 @@
     const enLogo = await loadImg('/assets/logos/enervit_logo_white_tight.svg');
     /* Both logos at the SAME height, preserving aspect ratio, as one centered
        group with a "×" between — proportional, equal-sized, close together. */
-    const logoH = 50, gap = 30, logoY = 92;
+    const logoH = 52, gap = 20, logoY = 92;
     const ar = (img) => img ? ((img.naturalWidth || img.width) / (img.naturalHeight || img.height) || 3) : 0;
     const attW = ar(rcLogo) * logoH;
     const enW  = ar(enLogo) * logoH;

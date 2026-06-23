@@ -5,24 +5,25 @@
   let overlay = null;
 
   const ART = {
-    gel:      '/assets/scenes/stations/item-gel-sachet.png',
-    caffeine: '/assets/scenes/stations/item-gel-caffeine.png',
-    jelly:    '/assets/scenes/stations/item-jelly.png',
-    chews:    '/assets/scenes/stations/item-chews.png',
-    bar:      '/assets/scenes/stations/item-bar-wrapped.png',
-    drink:    '/assets/scenes/stations/item-isocarb-sachet.png',
-    banana:   '/assets/scenes/prerace/food-banana.png'
+    gel:         '/assets/scenes/stations/item-gel-sachet.png',
+    caffeine:    '/assets/scenes/stations/item-gel-caffeine.png',
+    jelly:       '/assets/scenes/stations/item-jelly.png',
+    chews:       '/assets/scenes/stations/item-chews.png',
+    bar:         '/assets/scenes/stations/item-bar-wrapped.png',
+    drink:       '/assets/scenes/stations/item-isocarb-sachet.png',
+    'liquid-gel':'/assets/scenes/stations/item-liquid-gel.png'
   };
 
+  /* Real Enervit C2:1PRO endurance products (enervit.cz) */
   const TRAY_INITIAL = [
-    { id: 'gel1',     type: 'gel',      label: 'C2:1 GEL'  },
-    { id: 'gel2',     type: 'gel',      label: 'C2:1 GEL'  },
-    { id: 'caf1',     type: 'caffeine', label: 'CAFFEINE'  },
-    { id: 'jelly1',   type: 'jelly',    label: 'JELLY'     },
-    { id: 'jelly2',   type: 'jelly',    label: 'JELLY'     },
-    { id: 'chews1',   type: 'chews',    label: 'CHEWS'     },
-    { id: 'bar1',     type: 'bar',      label: 'C2:1 BAR'  },
-    { id: 'banana1',  type: 'banana',   label: 'Banán'     }
+    { id: 'gel1',     type: 'gel',        label: 'Carbo Gel C2:1PRO' },
+    { id: 'gel2',     type: 'gel',        label: 'Carbo Gel C2:1PRO' },
+    { id: 'caf1',     type: 'caffeine',   label: 'Carbo Gel Caffeine' },
+    { id: 'jelly1',   type: 'jelly',      label: 'Carbo Jelly C2:1PRO' },
+    { id: 'chews1',   type: 'chews',      label: 'Carbo Chews C2:1PRO' },
+    { id: 'bar1',     type: 'bar',        label: 'Carbo Bar C2:1PRO' },
+    { id: 'liq1',     type: 'liquid-gel', label: 'Liquid Gel C2:1PRO' },
+    { id: 'drink1',   type: 'drink',      label: 'Isocarb C2:1PRO' }
   ];
 
   let tray = [];
@@ -45,7 +46,7 @@
       <div class="prerace-shell">
         <div class="step-pill">Krok 4 / 5 · Tres</div>
         <h2 class="title-display">Naplň si dres</h2>
-        <p class="lead">Ťukni na produkt → ťukni na kapsu. <strong>Max 2 / kapsa.</strong> Vyvážená sada (gel + bar + jelly) = max bonus.</p>
+        <p class="lead">Ťukni na produkt Enervit → ťukni na kapsu. <strong>Max 2 / kapsa.</strong> Vyvážená sada (gel + bar + jelly) = max bonus.</p>
         <div class="packing-stage">
           <div class="jersey">
             <div class="pocket" data-i="0"><span class="lbl">L kapsa</span></div>
@@ -54,7 +55,7 @@
           </div>
           <div class="tray" id="pack-tray"></div>
         </div>
-        <div class="prerace-foot" id="pack-hint">Tip: 1 banán + 1 gel + 1 jelly dá nejvyrovnanější boost.</div>
+        <div class="prerace-foot" id="pack-hint">Tip: gel + bar + jelly dá nejvyrovnanější boost.</div>
         <button type="button" class="btn btn-primary" id="pack-confirm">Hotovo (0)</button>
         <button type="button" class="btn btn-ghost" id="pack-reset">Vyprázdnit</button>
       </div>
@@ -150,10 +151,9 @@
     const counts = flat.reduce((a, c) => (a[c.type] = (a[c.type] || 0) + 1, a), {});
     const j = window.rcScenes.journey();
     j.pocketsLoaded = {
-      gel:    counts.gel    || 0,
+      gel:    (counts.gel || 0) + (counts.caffeine || 0) + (counts['liquid-gel'] || 0),
       bar:    counts.bar    || 0,
-      drink:  counts.drink  || 0,
-      banana: counts.banana || 0
+      drink:  counts.drink  || 0
     };
 
     let bonus = 0;
@@ -162,7 +162,6 @@
     else if (types === 2) bonus += 15;
     else if (types === 1) bonus += 5;
     bonus += Math.min(15, flat.length * 2);
-    if (counts.banana) bonus += 10; /* banana adds a small fresh-fuel bonus */
     j.packingBonus = bonus;
     j.prepBonusEnergy = (j.prepBonusEnergy || 0) + Math.round(bonus / 3);
 

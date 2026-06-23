@@ -701,16 +701,15 @@
       /* Auto baseline cadence + boost when pressing */
       const grad = elevationGradientAt(state.distance);
       const gradMul = Math.max(0.42, Math.min(1.55, 1 - grad * 0.085)); /* steeper = realistic climb/descent swing */
-      const baseSpeed = 0.7;            // automatic pedaling
-      const boost = pressing ? 1.4 : 1;  // boost while held
+      const baseSpeed = 0.82;           // automatic pedaling
+      const boost = pressing ? 1.45 : 1; // boost while held
       const targetSpeed = baseSpeed * gradMul * state.boostMul * boost;
-      state.speed += (targetSpeed - state.speed) * Math.min(1, dt * 3);
+      state.speed += (targetSpeed - state.speed) * Math.min(1, dt * 3.5);
 
       /* Forward distance + progress */
-      /* Race duration target ~110s at speed=1.0 (15 % slower than the
-         previous 90 s pacing — better breathing room between landmarks). */
-      state.distance += state.speed * 272 * dt;
-      state.progressPct = Math.min(100, state.progressPct + state.speed * (100 / 106) * dt);
+      /* Race duration target ~70s at speed=1.0 — fast, punchy lap pacing. */
+      state.distance += state.speed * 360 * dt;
+      state.progressPct = Math.min(100, state.progressPct + state.speed * (100 / 70) * dt);
 
       /* Cadence + pedal animation */
       const targetCadence = pressing ? 110 : 90;
