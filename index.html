@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATT Investments x Enervit — MČR MSR Silnice 2026 Jeseník</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            overflow: hidden;
+            background: #000;
+            font-family: 'Arial Black', sans-serif;
+        }
+        #game-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+        }
+        canvas {
+            display: block;
+        }
+
+        /* === ATT Investments brand tokens === */
+        /* Navy #00205b · Gold #f1cc7e · Enervit red #e30613 */
+
+        /* HUD */
+        #hud {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            pointer-events: none;
+            z-index: 100;
+        }
+
+        .hud-left, .hud-right {
+            display: flex;
+            gap: 15px;
+        }
+
+        .hud-panel {
+            background: rgba(0, 32, 91, 0.82);
+            border: 2px solid #f1cc7e;
+            border-radius: 10px;
+            padding: 12px 20px;
+            color: white;
+            backdrop-filter: blur(5px);
+        }
+
+        .hud-panel.rank {
+            border-color: #f1cc7e;
+            background: rgba(0, 32, 91, 0.9);
+        }
+
+        .hud-panel.elevation {
+            border-color: #00cc00;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            color: #f1cc7e;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hud-panel.rank .stat-label {
+            color: #f1cc7e;
+        }
+
+        .hud-panel.elevation .stat-label {
+            color: #00cc00;
+        }
+
+        .stat-value {
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .stat-value.small {
+            font-size: 20px;
+        }
+
+        /* Position indicator */
+        #position-display {
+            display: flex;
+            align-items: baseline;
+            gap: 5px;
+        }
+
+        #position-display .ordinal {
+            font-size: 14px;
+            color: #f1cc7e;
+        }
+
+        /* Minimap / Route progress */
+        #route-progress {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 40px;
+            height: 300px;
+            background: rgba(0, 32, 91, 0.7);
+            border: 2px solid #f1cc7e;
+            border-radius: 20px;
+            z-index: 100;
+            overflow: hidden;
+        }
+
+        #route-track {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 90%;
+            top: 5%;
+            background: linear-gradient(to bottom, #e30613, #f1cc7e, #00cc00);
+            border-radius: 2px;
+        }
+
+        #player-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 20px;
+            height: 20px;
+            background: #f1cc7e;
+            border: 3px solid white;
+            border-radius: 50%;
+            bottom: 5%;
+            transition: bottom 0.3s;
+            box-shadow: 0 0 10px #f1cc7e;
+        }
+
+        .checkpoint-marker {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 30px;
+            height: 3px;
+            background: white;
+        }
+
+        #checkpoint-lipova { bottom: 30%; }
+        #checkpoint-ramzova { bottom: 65%; }
+        #checkpoint-finish { bottom: 95%; }
+
+        /* Energy Bar */
+        #energy-container {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 350px;
+            z-index: 100;
+        }
+
+        #energy-bar-bg {
+            background: rgba(0, 32, 91, 0.75);
+            border: 2px solid #f1cc7e;
+            border-radius: 12px;
+            height: 25px;
+            overflow: hidden;
+            backdrop-filter: blur(5px);
+        }
+
+        #energy-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #00cc00, #00ff00);
+            width: 100%;
+            transition: width 0.2s;
+        }
+
+        #energy-label {
+            text-align: center;
+            color: #f1cc7e;
+            font-size: 12px;
+            margin-top: 5px;
+            letter-spacing: 2px;
+        }
+
+        /* Speedometer */
+        #speedometer {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            width: 120px;
+            height: 120px;
+            background: rgba(0, 32, 91, 0.85);
+            border: 3px solid #f1cc7e;
+            border-radius: 50%;
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #speedometer .speed-value {
+            font-size: 36px;
+            font-weight: bold;
+            color: white;
+        }
+
+        #speedometer .speed-unit {
+            font-size: 12px;
+            color: #f1cc7e;
+        }
+
+        /* Start Screen */
+        #start-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #00102e 0%, #00205b 50%, #003080 100%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+        }
+
+        #start-screen h1 {
+            font-size: 52px;
+            color: #f1cc7e;
+            text-shadow: 0 0 20px rgba(241,204,126,0.5), 0 0 40px rgba(241,204,126,0.25);
+            margin-bottom: 6px;
+            letter-spacing: 4px;
+            text-align: center;
+            line-height: 1.15;
+        }
+
+        #start-screen h2 {
+            font-size: 26px;
+            color: white;
+            margin-bottom: 8px;
+        }
+
+        .event-badge {
+            display: inline-block;
+            background: #e30613;
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            letter-spacing: 2px;
+            padding: 6px 18px;
+            border-radius: 4px;
+            margin-bottom: 18px;
+        }
+
+        .route-info {
+            color: #8899bb;
+            font-size: 16px;
+            margin-bottom: 40px;
+        }
+
+        .route-info span {
+            color: #00cc00;
+            font-weight: bold;
+        }
+
+        #start-btn {
+            background: linear-gradient(135deg, #f1cc7e, #d4a84a);
+            border: none;
+            padding: 20px 60px;
+            font-size: 24px;
+            color: #00205b;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            transition: all 0.3s;
+            pointer-events: auto;
+        }
+
+        #start-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px rgba(241,204,126,0.6);
+        }
+
+        .controls-info {
+            margin-top: 40px;
+            color: #8899bb;
+            font-size: 16px;
+        }
+
+        .controls-info span {
+            color: #f1cc7e;
+        }
+
+        .powered-by {
+            position: absolute;
+            bottom: 30px;
+            color: #556688;
+            font-size: 14px;
+        }
+
+        .powered-by span {
+            color: #f1cc7e;
+        }
+
+        .powered-by .enervit {
+            color: #e30613;
+        }
+
+        /* Enervit Pickup Notification */
+        #pickup-notification {
+            position: absolute;
+            top: 40%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 80, 0, 0.95);
+            padding: 20px 40px;
+            border-radius: 15px;
+            border: 3px solid #00ff00;
+            color: white;
+            font-size: 22px;
+            display: none;
+            z-index: 150;
+            animation: popIn 0.3s ease-out;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes popIn {
+            0% { transform: translate(-50%, -50%) scale(0); }
+            100% { transform: translate(-50%, -50%) scale(1); }
+        }
+
+        /* Finish Screen */
+        #finish-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 16, 46, 0.94);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+        }
+
+        #finish-screen h1 {
+            font-size: 56px;
+            color: #f1cc7e;
+            text-shadow: 0 0 20px rgba(241,204,126,0.5);
+            margin-bottom: 20px;
+        }
+
+        #finish-position {
+            font-size: 36px;
+            color: #f1cc7e;
+            margin-bottom: 20px;
+        }
+
+        #final-time {
+            font-size: 42px;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        /* Product Selection */
+        #product-selection {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(0, 16, 46, 0.96);
+            padding: 30px;
+            border-radius: 20px;
+            border: 3px solid #f1cc7e;
+            display: none;
+            z-index: 250;
+            text-align: center;
+            backdrop-filter: blur(10px);
+        }
+
+        #product-selection h2 {
+            color: #f1cc7e;
+            margin-bottom: 10px;
+            font-size: 26px;
+        }
+
+        #product-selection .situation {
+            color: #e3c27e;
+            margin-bottom: 20px;
+            font-size: 16px;
+        }
+
+        .product-options {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .product-btn {
+            background: linear-gradient(135deg, #001840, #00205b);
+            border: 2px solid #f1cc7e;
+            padding: 20px;
+            border-radius: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 150px;
+            pointer-events: auto;
+        }
+
+        .product-btn:hover {
+            transform: scale(1.05);
+            border-color: #00ff00;
+            box-shadow: 0 0 20px rgba(241,204,126,0.4);
+        }
+
+        .product-btn .product-name {
+            color: white;
+            font-size: 13px;
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .product-btn .product-effect {
+            color: #00ff00;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="game-container">
+        <!-- Start Screen -->
+        <div id="start-screen">
+            <h1>MČR & MSR<br>SILNICE 2026</h1>
+            <h2>Jeseník — Závod s kopce i do kopce</h2>
+            <div class="event-badge">25 – 28. ČERVNA 2026</div>
+            <div class="route-info">
+                Trasa: <span>52 km</span> | Převýšení: <span>1 200 m</span>
+            </div>
+            <button id="start-btn">START ZÁVODU</button>
+            <div class="controls-info">
+                <span>↑/W</span> Šlapat &nbsp;&nbsp;
+                <span>↓/S</span> Brzda &nbsp;&nbsp;
+                <span>←→/A/D</span> Směr
+            </div>
+            <div class="powered-by">
+                <span>ATT INVESTMENTS</span> x <span class="enervit">ENERVIT</span>
+            </div>
+        </div>
+
+        <!-- HUD -->
+        <div id="hud" style="display: none;">
+            <div class="hud-left">
+                <div class="hud-panel rank">
+                    <div class="stat-label">Pozice</div>
+                    <div class="stat-value" id="position-display">
+                        <span id="rank">1</span><span class="ordinal">.</span> / 9
+                    </div>
+                </div>
+                <div class="hud-panel">
+                    <div class="stat-label">Čas</div>
+                    <div class="stat-value" id="time">00:00</div>
+                </div>
+            </div>
+            <div class="hud-right">
+                <div class="hud-panel elevation">
+                    <div class="stat-label">Nadmořská výška</div>
+                    <div class="stat-value small"><span id="elevation">440</span> m</div>
+                </div>
+                <div class="hud-panel">
+                    <div class="stat-label">Vzdálenost</div>
+                    <div class="stat-value small"><span id="distance">0.0</span> / 52 km</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Speedometer -->
+        <div id="speedometer" style="display: none;">
+            <div class="speed-value"><span id="speed">0</span></div>
+            <div class="speed-unit">km/h</div>
+        </div>
+
+        <!-- Route Progress -->
+        <div id="route-progress" style="display: none;">
+            <div id="route-track"></div>
+            <div class="checkpoint-marker" id="checkpoint-lipova" title="Lipová-lázně"></div>
+            <div class="checkpoint-marker" id="checkpoint-ramzova" title="Ramzová"></div>
+            <div class="checkpoint-marker" id="checkpoint-finish" title="Jeseník"></div>
+            <div id="player-marker"></div>
+        </div>
+
+        <!-- Energy Bar -->
+        <div id="energy-container" style="display: none;">
+            <div id="energy-bar-bg">
+                <div id="energy-bar"></div>
+            </div>
+            <div id="energy-label">ENERGIE</div>
+        </div>
+
+        <!-- Pickup Notification -->
+        <div id="pickup-notification"></div>
+
+        <!-- Product Selection -->
+        <div id="product-selection">
+            <h2>VYBER SPRÁVNÝ PRODUKT!</h2>
+            <p class="situation" id="situation-text">Co potřebuješ právě teď?</p>
+            <div class="product-options" id="product-options"></div>
+        </div>
+
+        <!-- Finish Screen -->
+        <div id="finish-screen">
+            <h1>JESENÍK!</h1>
+            <div id="finish-position">Dokončil jsi jako <span id="final-rank">1.</span></div>
+            <div id="final-time">Čas: <span id="final-time-value">00:00</span></div>
+            <button id="restart-btn" style="background: linear-gradient(135deg, #f1cc7e, #d4a84a); border: none; padding: 20px 60px; font-size: 24px; color: #00205b; font-weight: bold; border-radius: 50px; cursor: pointer;">ZNOVU</button>
+        </div>
+    </div>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

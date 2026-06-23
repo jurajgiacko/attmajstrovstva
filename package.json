@@ -1,0 +1,19 @@
+{
+  "name": "att-majstrovstva-game",
+  "version": "1.0.0",
+  "description": "3D cycling game — MČR MSR Silnice 2026, Jeseník. ATT Investments x Enervit.",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "keywords": ["game", "cycling", "3D", "threejs", "att-investments", "enervit"],
+  "license": "ISC",
+  "dependencies": {
+    "three": "^0.181.2"
+  },
+  "devDependencies": {
+    "vite": "^7.2.6"
+  }
+}
