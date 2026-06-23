@@ -299,19 +299,58 @@
             color: #f1cc7e;
         }
 
-        .powered-by {
+        .start-logos {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+        }
+
+        .start-logos img {
+            height: 50px;
+            width: auto;
+        }
+
+        .start-logos .mcr-logo {
+            height: 70px;
+        }
+
+        .start-logos .logo-divider {
+            width: 2px;
+            height: 40px;
+            background: rgba(241,204,126,0.3);
+        }
+
+        .bottom-bar {
             position: absolute;
-            bottom: 30px;
+            bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .bottom-bar img {
+            height: 30px;
+            width: auto;
+            opacity: 0.7;
+        }
+
+        .bottom-bar .x-mark {
             color: #556688;
             font-size: 14px;
+            font-weight: bold;
         }
 
-        .powered-by span {
-            color: #f1cc7e;
+        .finish-logos {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 30px;
         }
 
-        .powered-by .enervit {
-            color: #e30613;
+        .finish-logos img {
+            height: 40px;
+            width: auto;
         }
 
         /* Enervit Pickup Notification */
@@ -440,6 +479,11 @@
     <div id="game-container">
         <!-- Start Screen -->
         <div id="start-screen">
+            <div class="start-logos">
+                <img src="/assets/logos/mcr_msr_logo.png" alt="MČR MSR Silnice 2026" class="mcr-logo">
+                <div class="logo-divider"></div>
+                <img src="/assets/logos/att_investments_logo.svg" alt="ATT Investments">
+            </div>
             <h1>MČR & MSR<br>SILNICE 2026</h1>
             <h2>Jeseník — Závod s kopce i do kopce</h2>
             <div class="event-badge">25 – 28. ČERVNA 2026</div>
@@ -452,8 +496,10 @@
                 <span>↓/S</span> Brzda &nbsp;&nbsp;
                 <span>←→/A/D</span> Směr
             </div>
-            <div class="powered-by">
-                <span>ATT INVESTMENTS</span> x <span class="enervit">ENERVIT</span>
+            <div class="bottom-bar">
+                <img src="/assets/logos/att_investments_logo.svg" alt="ATT Investments">
+                <span class="x-mark">×</span>
+                <img src="/assets/logos/enervit_logo_white.svg" alt="Enervit">
             </div>
         </div>
 
@@ -518,6 +564,11 @@
 
         <!-- Finish Screen -->
         <div id="finish-screen">
+            <div class="finish-logos">
+                <img src="/assets/logos/mcr_msr_logo.png" alt="MČR MSR" style="height:50px;">
+                <img src="/assets/logos/att_investments_logo.svg" alt="ATT Investments">
+                <img src="/assets/logos/enervit_logo_white.svg" alt="Enervit">
+            </div>
             <h1>JESENÍK!</h1>
             <div id="finish-position">Dokončil jsi jako <span id="final-rank">1.</span></div>
             <div id="final-time">Čas: <span id="final-time-value">00:00</span></div>
