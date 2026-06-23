@@ -39,9 +39,17 @@
     if (x > 0.67) return 'right';
     return 'center';
   }
+  /* While a modal is up (tactic decision / finish), the game is paused —
+     the steering tap-zone must NOT swallow touches meant for modal buttons. */
+  function inputBlocked() {
+    const s = window.rcEngine && window.rcEngine.getState && window.rcEngine.getState();
+    return !!(s && (s.paused || s.finished));
+  }
+
   if (tap) {
     const passive = { passive: false };
     tap.addEventListener('touchstart', (e) => {
+      if (inputBlocked()) return;
       e.preventDefault();
       const t = e.touches[0];
       const zone = classifyTouch(t.clientX);
@@ -53,6 +61,7 @@
     tap.addEventListener('touchcancel',(e) => { e.preventDefault(); tapLane = 0; up(); }, passive);
     /* mouse for desktop preview testing */
     tap.addEventListener('mousedown', (e) => {
+      if (inputBlocked()) return;
       const zone = classifyTouch(e.clientX);
       if (zone === 'left')  tapLane = -1;
       else if (zone === 'right') tapLane = +1;

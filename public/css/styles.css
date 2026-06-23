@@ -1992,3 +1992,10 @@ body.race-active .game-stage { background: transparent; }
   padding: 12px 0 4px;
   background: linear-gradient(to top, rgba(2,9,26,0.97) 55%, rgba(2,9,26,0));
 }
+
+/* Ensure modal buttons respond instantly to taps (no 300ms delay, no gesture
+   capture) and always sit above the steering layer. */
+.tactic-btn, .finish-actions .btn, #pump-btn {
+  touch-action: manipulation;
+  pointer-events: auto;
+}

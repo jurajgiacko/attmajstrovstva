@@ -196,7 +196,7 @@
 
       /* Player marker */
       const playerEl = makeBikeMarker('cyclist-player-topdown', true);
-      playerMarker = new maplibregl.Marker({ element: playerEl, anchor: 'center', rotationAlignment: 'map' })
+      playerMarker = new maplibregl.Marker({ element: playerEl, anchor: 'center', rotationAlignment: 'viewport' })
         .setLngLat(center)
         .addTo(m);
 
@@ -206,7 +206,7 @@
       const pelo = window.rcEngine?.getPeloton?.() || [];
       for (let i = 0; i < (pelo.length || 4); i++) {
         const el = makeBikeMarker(sprites[i % sprites.length], false);
-        const mk = new maplibregl.Marker({ element: el, anchor: 'center', rotationAlignment: 'map' })
+        const mk = new maplibregl.Marker({ element: el, anchor: 'center', rotationAlignment: 'viewport' })
           .setLngLat(center)
           .addTo(m);
         pelotonMarkers.push(mk);

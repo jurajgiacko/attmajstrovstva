@@ -51,7 +51,12 @@
       btn.className = 'tactic-btn';
       btn.dataset.id = opt.id;
       btn.innerHTML = `<span>${opt.label}</span><span class="hint">${opt.hint || ''}</span>`;
-      btn.addEventListener('click', () => choose(state, opt, onChoice), { once: true });
+      /* pointerup fires reliably for both touch and mouse — avoids the mobile
+         synthetic-click quirks that left these buttons unresponsive. */
+      let done = false;
+      const pick = (e) => { if (done) return; done = true; e.preventDefault(); choose(state, opt, onChoice); };
+      btn.addEventListener('pointerup', pick);
+      btn.addEventListener('click', pick);
       els.options.appendChild(btn);
     });
 
