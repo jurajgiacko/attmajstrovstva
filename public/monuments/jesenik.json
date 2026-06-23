@@ -1,83 +1,84 @@
 {
   "id": "jesenik",
   "name": "Jeseník",
-  "subtitle": "MČR & MSR Silnice 2026 — Jeseník → Ramzová → Jeseník",
+  "subtitle": "MČR & MSR Silnice 2026 — okruh Jeseník (Rejvíz)",
   "date": "2026-06-28",
   "start_location": "Jeseník, Masarykovo náměstí",
   "real": {
-    "long_km": 52,
-    "long_elevation_m": 1200,
-    "short_km": 32,
-    "short_elevation_m": 760
+    "long_km": 26.2,
+    "long_elevation_m": 490,
+    "laps_elite": 8,
+    "elite_km": 209,
+    "short_km": 26.2,
+    "short_elevation_m": 490
   },
   "ingame": {
     "duration_s": 180,
     "scaled_distance_units": 1000
   },
   "segments": [
-    { "from_pct": 0,   "to_pct": 12,  "label": "Jeseník → Lipová-lázně",     "gradient": 1.0,  "kind": "flat" },
-    { "from_pct": 12,  "to_pct": 28,  "label": "Lipová → Ostružná",          "gradient": 2.4,  "kind": "rolling" },
-    { "from_pct": 28,  "to_pct": 46,  "label": "Stoupání na Ramzovou",       "gradient": 8.5,  "kind": "climb" },
-    { "from_pct": 46,  "to_pct": 56,  "label": "Červenohorské sedlo",        "gradient": -1.2, "kind": "rolling" },
-    { "from_pct": 56,  "to_pct": 68,  "label": "Sjezd k Branné",             "gradient": -6.0, "kind": "descent" },
-    { "from_pct": 68,  "to_pct": 80,  "label": "Pod Pradědem",               "gradient": 4.5,  "kind": "climb" },
-    { "from_pct": 80,  "to_pct": 90,  "label": "Návrat přes Lipovou",        "gradient": -3.0, "kind": "rolling" },
-    { "from_pct": 90,  "to_pct": 100, "label": "Dojezd · Masarykovo nám.",   "gradient": 1.5,  "kind": "flat" }
+    { "from_pct": 0,   "to_pct": 15,  "label": "Jeseník → Písečná",          "gradient": -1.5, "kind": "rolling" },
+    { "from_pct": 15,  "to_pct": 30,  "label": "Písečná → Chebzí",           "gradient": 0.8,  "kind": "flat" },
+    { "from_pct": 30,  "to_pct": 50,  "label": "Stoupání na Rejvíz",         "gradient": 6.5,  "kind": "climb" },
+    { "from_pct": 50,  "to_pct": 62,  "label": "Rejvíz — vrchol okruhu",     "gradient": 3.5,  "kind": "climb" },
+    { "from_pct": 62,  "to_pct": 78,  "label": "Sjezd k Dětřichovu",         "gradient": -5.5, "kind": "descent" },
+    { "from_pct": 78,  "to_pct": 90,  "label": "Dětřichov → Bukovice",       "gradient": -3.0, "kind": "rolling" },
+    { "from_pct": 90,  "to_pct": 100, "label": "Dojezd · Masarykovo nám.",   "gradient": 0.5,  "kind": "flat" }
   ],
   "pickups": [
     { "pct": 16, "type": "gel"        },
-    { "pct": 30, "type": "jelly"      },
-    { "pct": 44, "type": "bar"        },
-    { "pct": 56, "type": "chews"      },
-    { "pct": 70, "type": "liquid-gel" },
+    { "pct": 28, "type": "jelly"      },
+    { "pct": 40, "type": "bar"        },
+    { "pct": 52, "type": "chews"      },
+    { "pct": 68, "type": "liquid-gel" },
     { "pct": 82, "type": "gel"        },
-    { "pct": 92, "type": "caffeine"   }
+    { "pct": 93, "type": "caffeine"   }
   ],
   "tactics": [
     {
-      "trigger_pct": 20,
-      "context": "Lipová-lázně — před stoupáním",
-      "subtext": "Roller údolím. Šetříš na Ramzovou?",
+      "trigger_pct": 22,
+      "context": "Písečná — před stoupáním",
+      "subtext": "Rovinka na sever. Šetříš na Rejvíz?",
       "options": [
         { "id": "attack",  "label": "Tlač do pelotonu",  "hint": "Zabereš pozici",          "cost_energy": 12, "speed_mul": 1.20, "duration_s": 20 },
         { "id": "draft",   "label": "Drž peloton",       "hint": "Šetří energii",           "cost_energy": -2, "speed_mul": 1.0,  "duration_s": 20 },
-        { "id": "refuel",  "label": "Carbo Gel C2:1PRO", "hint": "+25 · příprava na Ramzovou","cost_energy": -25,"speed_mul": 0.95, "duration_s": 5  }
+        { "id": "refuel",  "label": "Carbo Gel C2:1PRO", "hint": "+25 · příprava na Rejvíz", "cost_energy": -25,"speed_mul": 0.95, "duration_s": 5  }
       ]
     },
     {
-      "trigger_pct": 30,
-      "context": "Ostružná — Ramzová před sebou",
-      "subtext": "Stoupání 8.5 % · 4 km. Jak to dáš?",
+      "trigger_pct": 34,
+      "context": "Chebzí — Rejvíz před sebou",
+      "subtext": "Dlouhé stoupání na Rejvíz. Jak to dáš?",
       "options": [
-        { "id": "attack",  "label": "Atak na Ramzovou",  "hint": "Rychlý, ale drahý",       "cost_energy": 22, "speed_mul": 1.30, "duration_s": 30 },
+        { "id": "attack",  "label": "Atak na Rejvíz",    "hint": "Rychlý, ale drahý",       "cost_energy": 22, "speed_mul": 1.30, "duration_s": 30 },
         { "id": "draft",   "label": "Drž peloton",       "hint": "Skupinová síla",          "cost_energy": -3, "speed_mul": 1.0,  "duration_s": 30 },
         { "id": "refuel",  "label": "Carbo Bar C2:1PRO", "hint": "+35 · pomalý start",      "cost_energy": -35,"speed_mul": 0.90, "duration_s": 4  }
       ]
     },
     {
-      "trigger_pct": 52,
-      "context": "Červenohorské sedlo — hřeben",
-      "subtext": "Vítr přes sedlo. Skupina nebo solo útěk?",
+      "trigger_pct": 55,
+      "context": "Rejvíz — vrchol okruhu",
+      "subtext": "Nejvyšší bod (811 m). Drž skupinu nebo solo?",
       "options": [
-        { "id": "attack",  "label": "Solo útěk",          "hint": "Vysoké riziko",          "cost_energy": 18, "speed_mul": 1.25, "duration_s": 25 },
+        { "id": "attack",  "label": "Solo přes vrchol",   "hint": "Vysoké riziko",          "cost_energy": 18, "speed_mul": 1.25, "duration_s": 25 },
         { "id": "draft",   "label": "Ve skupině",         "hint": "Kryje tě peloton",       "cost_energy": -4, "speed_mul": 1.0,  "duration_s": 25 },
         { "id": "refuel",  "label": "Carbo Jelly C2:1PRO","hint": "+30 · rychlé vstřebání", "cost_energy": -30,"speed_mul": 1.0,  "duration_s": 6  }
       ]
     },
     {
       "trigger_pct": 70,
-      "context": "Pod Pradědem — předposlední kopec",
-      "subtext": "Dojezd do Jeseníku se blíží.",
+      "context": "Sjezd k Dětřichovu",
+      "subtext": "Technický sjezd. Riskneš to dolů?",
       "options": [
-        { "id": "attack",  "label": "Sprint na vrch",     "hint": "Strhni peloton",         "cost_energy": 22, "speed_mul": 1.30, "duration_s": 25 },
-        { "id": "draft",   "label": "Drž peloton",        "hint": "Trpělivost na dojezd",   "cost_energy": -2, "speed_mul": 1.0,  "duration_s": 25 },
-        { "id": "refuel",  "label": "Liquid Gel + Chews", "hint": "+40 · plný balíček",     "cost_energy": -40,"speed_mul": 0.90, "duration_s": 5  }
+        { "id": "attack",  "label": "Útok na sjezdu",     "hint": "Strhni peloton",         "cost_energy": 16, "speed_mul": 1.35, "duration_s": 22 },
+        { "id": "draft",   "label": "Bezpečně v háku",    "hint": "Šetři na dojezd",        "cost_energy": -2, "speed_mul": 1.05, "duration_s": 22 },
+        { "id": "refuel",  "label": "Liquid Gel + Chews", "hint": "+40 · plný balíček",     "cost_energy": -40,"speed_mul": 0.95, "duration_s": 5  }
       ]
     },
     {
-      "trigger_pct": 92,
-      "context": "Masarykovo náměstí — dojezd",
-      "subtext": "Posledních 800 m k cílové pásce.",
+      "trigger_pct": 93,
+      "context": "Bukovice → Masarykovo náměstí",
+      "subtext": "Posledních pár set metrů k cílové pásce.",
       "options": [
         { "id": "attack",  "label": "All-in na pásku",    "hint": "Vyhraješ nebo prohraješ","cost_energy": 28, "speed_mul": 1.40, "duration_s": 20 },
         { "id": "draft",   "label": "Stabilní rytmus",    "hint": "Dojedeš v pelotonu",     "cost_energy": 0,  "speed_mul": 1.05, "duration_s": 20 },

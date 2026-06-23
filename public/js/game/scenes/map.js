@@ -7,13 +7,13 @@
 
   /* Same 7 zones as landmarks.js — pinned on the map */
   const ZONES = [
-    { pct: 0,  label: 'Start · Jeseník',      emoji: '🏁' },
-    { pct: 18, label: 'Lipová-lázně',         emoji: '🌲' },
-    { pct: 32, label: 'Ostružná',             emoji: '🏘' },
-    { pct: 46, label: 'Ramzová 8.5 %',        emoji: '⛰' },
-    { pct: 60, label: 'Červenohorské sedlo',  emoji: '💨' },
-    { pct: 78, label: 'Sjezd k Branné',       emoji: '🌲' },
-    { pct: 95, label: 'Cíl · Masarykovo nám.',emoji: '🏛' }
+    { pct: 0,  label: 'Start · Jeseník',       emoji: '🏁' },
+    { pct: 18, label: 'Písečná',               emoji: '🌲' },
+    { pct: 32, label: 'Chebzí',                emoji: '🏘' },
+    { pct: 46, label: 'Stoupání na Rejvíz',    emoji: '⛰' },
+    { pct: 58, label: 'Rejvíz 811 m',          emoji: '🏔' },
+    { pct: 76, label: 'Sjezd · Dětřichov',     emoji: '🌲' },
+    { pct: 95, label: 'Cíl · Masarykovo nám.', emoji: '🏛' }
   ];
 
   function build() {
@@ -24,7 +24,7 @@
     overlay.innerHTML = `
       <div class="bg-art" style="background-image:url('/assets/scenes/landscapes/jesenik-overview-map.png'); opacity:.18"></div>
       <div class="prerace-shell">
-        <div class="step-pill">Plán na dnes · 52 km</div>
+        <div class="step-pill">Okruh MČR · 26,2 km</div>
         <h2 class="title-display">Trasa Jeseník</h2>
         <p class="lead">Horský okruh Jeseníky. 7 zón, 5 taktických rozhodnutí, jedno kafe někde v polovině.</p>
         <div class="map-stage" id="map-stage">

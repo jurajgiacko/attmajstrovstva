@@ -13,10 +13,10 @@
       <div class="intro-shell">
         <div class="kicker">ATT Investments × Enervit</div>
         <h1 class="title-display">Jeseník</h1>
-        <p class="lead">Tvůj závodní den na MČR &amp; MSR v silniční cyklistice — od snídaně přes Ramzovou až po cíl na Masarykově náměstí. 52&nbsp;km, 1&nbsp;200&nbsp;m převýšení, pět taktických rozhodnutí.</p>
+        <p class="lead">Tvůj závodní den na MČR &amp; MSR v silniční cyklistice — od snídaně přes stoupání na Rejvíz až po cíl na Masarykově náměstí. Jeden okruh 26,2&nbsp;km, 490&nbsp;m převýšení, pět taktických rozhodnutí. (Muži Elite: 8 okruhů, 209&nbsp;km.)</p>
         <div class="intro-stats">
-          <div><strong>52</strong><span>km</span></div>
-          <div><strong>1 200</strong><span>m ↑</span></div>
+          <div><strong>26,2</strong><span>km / okruh</span></div>
+          <div><strong>490</strong><span>m ↑ / okruh</span></div>
           <div><strong>~2</strong><span>min hra</span></div>
         </div>
         <button type="button" class="btn btn-primary big" id="intro-start">Vyber si jezdce</button>

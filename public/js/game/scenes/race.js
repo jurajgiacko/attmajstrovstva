@@ -320,7 +320,7 @@
   async function enter() {
     hideAllPreraceOverlays();
     document.body.classList.add('race-active');
-    showMapLoading('Načítám mapu Pálavy…');
+    showMapLoading('Načítám mapu Jeseníku…');
 
     /* Load GPX once if needed */
     if (!routePoints.length) {

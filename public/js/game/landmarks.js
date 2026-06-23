@@ -5,13 +5,13 @@
 (function () {
   /* 7 zones along the Pálava 124 km route, each tied to one landscape PNG */
   const ZONES = [
-    { from: 0,  to: 12, art: 'jesenik-morning',        label: 'Start · Jeseník',          subtitle: 'Masarykovo náměstí, 10:00' },
-    { from: 12, to: 25, art: 'lipova-lazne',           label: 'Lipová-lázně',             subtitle: '~10 km · údolí pod horami' },
-    { from: 25, to: 38, art: 'ramzova-village',        label: 'Ostružná → Ramzová',       subtitle: '~22 km · před průsmykem' },
-    { from: 38, to: 50, art: 'ramzova-climb',          label: 'Stoupání na Ramzovou',     subtitle: '~24 km · 8.5 % gradient' },
-    { from: 50, to: 65, art: 'cervenohorske-sedlo',    label: 'Červenohorské sedlo',      subtitle: '~30 km · vítr přes hřeben' },
-    { from: 65, to: 80, art: 'praded-vista',           label: 'Pod Pradědem',             subtitle: '~38 km · sjezd k Branné' },
-    { from: 80, to: 100,art: 'jesenik-finish',         label: 'Cíl · Masarykovo nám.',    subtitle: '~52 km · dojezd v Jeseníku' }
+    { from: 0,  to: 14, art: 'jesenik-morning',        label: 'Start · Jeseník',          subtitle: 'Masarykovo náměstí, 10:00' },
+    { from: 14, to: 28, art: 'lipova-lazne',           label: 'Písečná',                  subtitle: '~5 km · údolí na sever' },
+    { from: 28, to: 38, art: 'ramzova-village',        label: 'Chebzí',                   subtitle: '~9 km · pod stoupáním' },
+    { from: 38, to: 55, art: 'ramzova-climb',          label: 'Stoupání na Rejvíz',       subtitle: '~13 km · dlouhý výjezd' },
+    { from: 55, to: 66, art: 'cervenohorske-sedlo',    label: 'Rejvíz — vrchol',          subtitle: '~16 km · 811 m, nejvyšší bod' },
+    { from: 66, to: 84, art: 'praded-vista',           label: 'Sjezd k Dětřichovu',       subtitle: '~20 km · technický sjezd' },
+    { from: 84, to: 100,art: 'jesenik-finish',         label: 'Cíl · Masarykovo nám.',    subtitle: '~26 km · konec okruhu' }
   ];
 
   let currentZone = -1;

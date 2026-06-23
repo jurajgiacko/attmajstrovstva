@@ -44,7 +44,7 @@
     build();
     const j = window.rcScenes.journey();
     overlay.querySelector('#drive-summary').innerHTML =
-      `Jsi v autě, na střeše kolo. Před sebou 52 km Jeseníků. Cíl: Masarykovo náměstí v Jeseníku.`;
+      `Jsi v autě, na střeše kolo. Před sebou okruh 26,2 km kolem Jeseníku — stoupání na Rejvíz. Cíl: Masarykovo náměstí.`;
     overlay.querySelector('#prep-summary').innerHTML = summarize(j);
     overlay.classList.add('show');
 
