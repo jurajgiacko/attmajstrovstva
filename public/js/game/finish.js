@@ -94,10 +94,10 @@
 
     const score = computeScore(state);
     const style = classifyStyle(state.styleLog);
-    const distanceKm = state.monument?.real?.long_km || 52;
+    const distanceKm = state.monument?.real?.long_km || 26.2;
     const pickupsTotal = (state.monument?.pickups || []).length;
 
-    els.ribbon.textContent = `${state.monument?.name || 'Monument'} dokončena`;
+    els.ribbon.textContent = `${state.monument?.name || 'Závod'} dokončen`;
     els.score.textContent = score.total;
     els.styleLabel.textContent = style.label;
     els.styleGlyph.textContent = style.glyph;

@@ -528,25 +528,31 @@ body.race-active .game-stage { background: transparent; }
 
 /* Bike markers on the map */
 .map-bike-marker {
-  width: 56px;
-  height: 56px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,.6));
   will-change: transform;
+  /* Circular rider token instead of a flat rectangular card */
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(241,204,126,.85);
+  background: #00205b;
+  box-shadow: 0 3px 9px rgba(0,0,0,.55);
 }
 .map-bike-marker img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  /* keep image upright relative to map even as map rotates */
+  width: 134%;
+  height: 134%;
+  object-fit: cover;            /* fill the circle, crop the card edges */
+  object-position: center 36%;
 }
 .map-bike-marker.map-player {
-  width: 72px;
-  height: 72px;
-  filter: drop-shadow(0 6px 16px rgba(229,55,71,0.55));
+  width: 60px;
+  height: 60px;
+  border-color: #e30613;
+  box-shadow: 0 4px 14px rgba(229,55,71,0.6);
 }
 .map-bike-marker.map-player::after {
   content: "";
@@ -809,10 +815,10 @@ body.race-active .game-stage { background: transparent; }
   display: none;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: safe center;
   text-align: center;
   padding: 28px 20px calc(28px + env(safe-area-inset-bottom));
-  background: linear-gradient(180deg, rgba(12,4,10,0.78) 0%, rgba(44,3,20,0.94) 100%);
+  background: linear-gradient(180deg, rgba(2,9,26,0.78) 0%, rgba(0, 32, 91,0.94) 100%);
   color: #fff;
   overflow-y: auto;
   opacity: 0;
@@ -833,7 +839,7 @@ body.race-active .game-stage { background: transparent; }
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: radial-gradient(60% 70% at 50% 50%, transparent, rgba(12,4,10,0.65));
+  background: radial-gradient(60% 70% at 50% 50%, transparent, rgba(2,9,26,0.65));
 }
 
 .intro-shell, .prerace-shell {
@@ -1449,7 +1455,7 @@ body.race-active .game-stage { background: transparent; }
   align-items: center;
   justify-content: center;
   pointer-events: none;
-  background: rgba(12,4,10,0.5);
+  background: rgba(2,9,26,0.5);
   backdrop-filter: blur(2px);
 }
 .race-countdown .num {
@@ -1538,7 +1544,7 @@ body.race-active .game-stage { background: transparent; }
   text-align: center;
   gap: 14px;
   padding: 20px;
-  background: linear-gradient(180deg, rgba(12,10,8,.6) 0%, rgba(12,10,8,.85) 100%);
+  background: linear-gradient(180deg, rgba(2,9,26,.6) 0%, rgba(2,9,26,.85) 100%);
   backdrop-filter: blur(6px);
   color: #fff;
   transition: opacity .35s ease;
@@ -1643,11 +1649,13 @@ body.race-active .game-stage { background: transparent; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: safe center;
   text-align: center;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
   gap: 18px;
   padding: 24px 20px calc(24px + env(safe-area-inset-bottom));
-  background: linear-gradient(180deg, rgba(12,10,8,0.78) 0%, rgba(44, 3, 20, 0.88) 100%);
+  background: linear-gradient(180deg, rgba(2,9,26,0.78) 0%, rgba(0, 32, 91, 0.88) 100%);
   backdrop-filter: blur(8px);
   color: #fff;
   opacity: 0;
@@ -1776,11 +1784,11 @@ body.race-active .game-stage { background: transparent; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: safe center;
   text-align: center;
   gap: 16px;
   padding: 28px 20px calc(28px + env(safe-area-inset-bottom));
-  background: linear-gradient(180deg, rgba(12,10,8,.85) 0%, rgba(44, 3, 20, 0.94) 100%);
+  background: linear-gradient(180deg, rgba(2,9,26,.85) 0%, rgba(0, 32, 91, 0.94) 100%);
   backdrop-filter: blur(10px);
   color: #fff;
   opacity: 0;
@@ -1971,4 +1979,21 @@ body.race-active .game-stage { background: transparent; }
     animation-duration: .001ms !important;
     transition-duration: .001ms !important;
   }
+}
+
+/* ── Mobile fix: keep tactic/finish modal buttons reachable on short phones ── */
+@media (max-height: 780px) {
+  .finish-modal { gap: 9px; padding-top: 14px; }
+  .finish-modal .finish-logos { display: none; }   /* branding lives elsewhere; save vertical space */
+  .finish-modal .finish-stats { gap: 7px; }
+  .tactic-modal { gap: 12px; padding-top: 16px; }
+}
+/* Pin the post-race actions to the bottom of the scroll area so they are
+   always tappable regardless of content height. */
+.finish-modal .finish-actions {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  padding: 12px 0 4px;
+  background: linear-gradient(to top, rgba(2,9,26,0.97) 55%, rgba(2,9,26,0));
 }

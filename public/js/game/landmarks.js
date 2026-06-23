@@ -78,15 +78,26 @@
     /* Top badges */
     const rcLogo = await loadImg('/assets/logos/att_investments_logo.svg');
     const enLogo = await loadImg('/assets/logos/enervit_logo_white.svg');
-    if (rcLogo) ctx.drawImage(rcLogo, 60, 90, 300, 73);
-    if (enLogo) ctx.drawImage(enLogo, 760, 95, 240, 64);
+    /* Draw each logo at a fixed height, preserving its natural aspect ratio
+       (forcing a fixed width was squashing the wide Enervit wordmark). */
+    const logoY = 96;
+    function drawLogoH(img, anchorX, targetH, align) {
+      if (!img) return 0;
+      const ar = (img.naturalWidth || img.width) / (img.naturalHeight || img.height) || 3;
+      const w = targetH * ar;
+      const x = align === 'right' ? anchorX - w : anchorX;
+      ctx.drawImage(img, x, logoY, w, targetH);
+      return w;
+    }
+    drawLogoH(rcLogo, 70, 74, 'left');      // ATT — top-left
+    drawLogoH(enLogo, 1010, 50, 'right');   // Enervit — top-right, true aspect
 
     /* Big "×" between logos */
     ctx.fillStyle = '#f1cc7e';
     ctx.font = '700 40px "Inter", sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('×', 540, 130);
+    ctx.fillText('×', 540, logoY + 34);
 
     /* Title block bottom */
     ctx.fillStyle = '#f6dca6';

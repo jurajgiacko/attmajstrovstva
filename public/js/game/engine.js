@@ -700,7 +700,7 @@
 
       /* Auto baseline cadence + boost when pressing */
       const grad = elevationGradientAt(state.distance);
-      const gradMul = Math.max(0.55, 1 - grad * 0.05);
+      const gradMul = Math.max(0.42, Math.min(1.55, 1 - grad * 0.085)); /* steeper = realistic climb/descent swing */
       const baseSpeed = 0.7;            // automatic pedaling
       const boost = pressing ? 1.4 : 1;  // boost while held
       const targetSpeed = baseSpeed * gradMul * state.boostMul * boost;
@@ -734,8 +734,8 @@
       if (window.rcCafe) window.rcCafe.tick(state);
 
       /* HUD live */
-      const SPEED_KMH_SCALE = 38;
-      const totalKm = state.monument?.real?.long_km || 52;
+      const SPEED_KMH_SCALE = 56;  /* realistic pro-peloton readout (~42 flat, ~20 climb, ~60 descent) */
+      const totalKm = state.monument?.real?.long_km || 26.2;
       const kmh = state.speed * SPEED_KMH_SCALE;
       const km  = state.progressPct * totalKm / 100;
 
