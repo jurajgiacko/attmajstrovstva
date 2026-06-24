@@ -8,30 +8,30 @@
 
   const OPTIONS = [
     {
-      id:    'espresso',
-      label: 'Espresso',
-      sub:   '+5 energie · krátký kofein boost',
-      img:   '/assets/scenes/stations/drink-espresso.png',
-      energy: 5, boost: 1.10, dur: 12, time: 0,  score: 60
+      id:    'gel',
+      label: 'Carbo Gel C2:1PRO',
+      sub:   '+18 výkonu · rychlý boost',
+      img:   '/assets/scenes/stations/item-gel-sachet.png',
+      energy: 18, boost: 1.12, dur: 12, time: 0, score: 90
     },
     {
-      id:    'cappuccino',
-      label: 'Cappuccino',
-      sub:   '+12 energie · střední boost · -3s čas',
-      img:   '/assets/scenes/stations/drink-cappuccino.png',
-      energy: 12, boost: 1.08, dur: 18, time: 3, score: 80
+      id:    'isocarb',
+      label: 'Isocarb C2:1PRO',
+      sub:   '+14 výkonu · hydratace + boost',
+      img:   '/assets/scenes/stations/item-isocarb-sachet.png',
+      energy: 14, boost: 1.06, dur: 16, time: 0, score: 85
     },
     {
-      id:    'kolac',
-      label: 'Koláček + káva',
-      sub:   '+25 energie · hodně kalorií · -8s čas',
-      img:   '/assets/scenes/stations/pastry-kolac.png',
-      energy: 25, boost: 1.0,  dur: 0,  time: 8, score: 110
+      id:    'bar',
+      label: 'Carbo Bar C2:1PRO',
+      sub:   '+28 výkonu · nejvíc kalorií',
+      img:   '/assets/scenes/stations/item-bar-wrapped.png',
+      energy: 28, boost: 1.0,  dur: 0,  time: 0, score: 110
     },
     {
       id:    'skip',
-      label: 'Přeskočit — držím tempo',
-      sub:   'Žádný stop, žádný bonus',
+      label: 'Nestavím — držím tempo',
+      sub:   'Žádné doplnění, žádný bonus',
       img:   null,
       energy: 0, boost: 1.0, dur: 0, time: 0, score: 0
     }
@@ -43,7 +43,7 @@
     overlay.id = 'scene-cafe';
     overlay.className = 'scene-overlay scene-cafe';
     overlay.innerHTML = `
-      <div class="bg-art" style="background-image:url('/assets/scenes/stations/cafe-pavlov.png')"></div>
+      <div class="bg-art" style="background-image:url('/assets/scenes/landscapes/cervenohorske-sedlo.png')"></div>
       <div class="prerace-shell">
         <div class="step-pill">~50 % okruhu · Občerstvovačka</div>
         <h2 class="title-display">Týmový vůz u silnice</h2>
@@ -61,8 +61,13 @@
       </div>
     `;
     document.body.appendChild(overlay);
+    overlay.style.zIndex = '1100';   /* above landmark/finish overlays */
     overlay.querySelectorAll('.food-card').forEach(btn => {
-      btn.addEventListener('click', () => choose(btn.dataset.id));
+      let done = false;
+      const pick = (e) => { if (done) return; done = true; e.preventDefault(); choose(btn.dataset.id); };
+      btn.addEventListener('pointerup', pick);
+      btn.addEventListener('touchend', pick);
+      btn.addEventListener('click', pick);
     });
     return overlay;
   }
@@ -94,9 +99,11 @@
     /* Pause race + open overlay */
     state.paused = true;
     build();
+    /* Make sure no landmark card is left on top of the feed-zone overlay. */
+    document.querySelectorAll('.landmark-card.show').forEach(e => e.classList.remove('show'));
     overlay.classList.add('show');
-    /* 5-second auto-default to "skip" */
-    timer = setTimeout(() => choose('skip'), 5000);
+    /* auto-default to "skip" if no choice */
+    timer = setTimeout(() => choose('skip'), 8000);
   }
 
   function reset() {
