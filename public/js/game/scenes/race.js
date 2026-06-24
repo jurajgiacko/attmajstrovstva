@@ -266,7 +266,7 @@
 
     /* Map stays north-up; each rider is rotated to its own travel heading so
        the top-down sprite always points the way it's actually going. */
-    if (playerMarker) { playerMarker.setLngLat(pCoord); playerMarker.setRotation((heading + 180) % 360); }
+    if (playerMarker) { playerMarker.setLngLat(pCoord); playerMarker.setRotation(heading); }
 
     /* Camera follows the player (no map rotation — north-up). */
     map.jumpTo({ center: pCoord });
@@ -281,7 +281,7 @@
       const dPct = p.relativeAhead / 80; // worldY/80 = pct
       const otherPct = Math.max(0, Math.min(100, playerPct + dPct));
       mk.setLngLat(pctToCoord(otherPct));
-      mk.setRotation((bearingAt(otherPct) + 180) % 360);
+      mk.setRotation(bearingAt(otherPct));
       /* Visually fade riders that are far behind the player */
       const el = mk.getElement();
       if (dPct < -3 && !el.classList.contains('map-passed')) {

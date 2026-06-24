@@ -191,11 +191,12 @@
     const idx = zoneAt(pct);
     if (idx !== -1 && idx !== currentZone) {
       currentZone = idx;
-      /* Skip the very first zone fanfare (player already saw intro/start),
-         but show all subsequent ones */
-      if (idx > 0) show(idx, state);
+      /* Only the marquee moments get a chapter card — keeps the ride seamless
+         (3 = climb to Rejvíz, 4 = summit, 6 = finish). Others pass without a stop. */
+      if (SHOW_ZONES.has(idx)) show(idx, state);
     }
   }
+  const SHOW_ZONES = new Set([3, 4, 6]);
 
   function reset() { currentZone = -1; }
 
