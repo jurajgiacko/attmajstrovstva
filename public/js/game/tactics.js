@@ -17,6 +17,27 @@
   let active = null;   // currently-shown decision
   let timerInt = null;
   let pendingHint = null;
+  let activeState = null;     // state ref for the open decision
+  let activeOnChoice = null;  // callback for the open decision
+
+  /* Event delegation on the stable options container — one listener for the
+     whole game, so a decision can never be "dead" due to a per-button listener
+     failing to attach. Fires on the first of pointerup/touchend/click; choose()
+     guards re-entry via `active`, so it can't double-fire. */
+  function onOptionTap(e) {
+    if (!active) return;
+    const btn = e.target.closest && e.target.closest('.tactic-btn');
+    if (!btn || !els.options.contains(btn)) return;
+    const opt = (active.options || []).find(o => o.id === btn.dataset.id);
+    if (!opt) return;
+    e.preventDefault();
+    choose(activeState, opt, activeOnChoice);
+  }
+  if (els.options) {
+    els.options.addEventListener('pointerup', onOptionTap);
+    els.options.addEventListener('touchend', onOptionTap);
+    els.options.addEventListener('click', onOptionTap);
+  }
 
   function setup(monument) {
     armed = (monument.tactics || []).map(t => ({ ...t, fired: false, hinted: false }));
@@ -37,6 +58,8 @@
   function open(state, tactic, onChoice) {
     if (!els.modal) return;
     active = tactic;
+    activeState = state;
+    activeOnChoice = onChoice;
     state.paused = true;
 
     els.ctx.textContent = tactic.context || 'Rozhodnutí';
@@ -51,13 +74,7 @@
       btn.className = 'tactic-btn';
       btn.dataset.id = opt.id;
       btn.innerHTML = `<span>${opt.label}</span><span class="hint">${opt.hint || ''}</span>`;
-      /* pointerup fires reliably for both touch and mouse — avoids the mobile
-         synthetic-click quirks that left these buttons unresponsive. */
-      let done = false;
-      const pick = (e) => { if (done) return; done = true; e.preventDefault(); choose(state, opt, onChoice); };
-      btn.addEventListener('touchend', pick);
-      btn.addEventListener('pointerup', pick);
-      btn.addEventListener('click', pick);
+      /* No per-button listener — handled by delegation on els.options. */
       els.options.appendChild(btn);
     });
 
@@ -130,6 +147,8 @@
     state.styleLog.push(opt.id);
 
     active = null;
+    activeState = null;
+    activeOnChoice = null;
   }
 
   function showChoiceFeedback(opt, delta, isDefault) {
