@@ -109,7 +109,7 @@ body.home .shell { max-width: 1180px; margin: 0 auto; padding: 0 20px; }
 .home-hero-art {
   position: absolute;
   inset: 0;
-  background-image: url('/assets/scenes/landscapes/palava-overview-map.png');
+  background-image: url('/assets/scenes/landscapes/jesenik-overview-map.png');
   background-size: cover;
   background-position: center;
   opacity: 0.32;

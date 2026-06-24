@@ -6,7 +6,7 @@
 
   const ART = {
     gel:         '/assets/scenes/stations/item-gel-sachet.png',
-    caffeine:    '/assets/scenes/stations/item-gel-caffeine.png',
+    caffeine:    '/assets/scenes/stations/item-gel-sachet.png',
     jelly:       '/assets/scenes/stations/item-jelly.png',
     chews:       '/assets/scenes/stations/item-chews.png',
     bar:         '/assets/scenes/stations/item-bar-wrapped.png',

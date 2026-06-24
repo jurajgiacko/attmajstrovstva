@@ -32,7 +32,7 @@
       { img: 'afterparty-cellar.png',  title: 'Chata se skupinou',       body: 'Scházíš s peletonem pod klenbu. Bublinky cinkají, někdo rozdává fotky z dnešního dojezdu. Jsi jedním z mnoha — a to je dobré.' },
       { img: 'afterparty-music.png',   title: 'Tanec společně',            body: 'Kapela hraje, peleton se drží v kruhu. Jako celý den — sdílená radost je dvojnásobná.' },
       { img: 'afterparty-cheers.png',  title: 'Toast za tým',              body: '„Na další rok!" volá někdo. Skla cinknou. Tvá strategie sedět-na-kolesech ti dnes přinesla nejen čas, ale i kamarády.' },
-      { img: 'afterparty-stars.png',   title: 'Tichý závěr',               body: 'U vyhlídky si jen naznačíš sklenku. Hvězdy. Ticho. <em>Ne každý monument musí být výhra. Někdy stačí přijet — s ostatními.</em>', finale: true }
+      { img: 'afterparty-stars.png',   title: 'Tichý závěr',               body: 'U vyhlídky si jen naznačíš sklenku. Hvězdy. Ticho. <em>Ne každý závod musí být výhra. Někdy stačí přijet — s ostatními.</em>', finale: true }
     ],
     'celebrate-fueler': [
       { img: 'afterparty-cellar.png',  title: 'Chata & čerstvé síly',   body: 'Tvoje strategie plnění kapes se vyplatila — máš ještě energii dopít celou láhev. Hostinský zvedá obočí nad tvou výdrží.' },
