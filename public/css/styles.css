@@ -1999,3 +1999,25 @@ body.race-active .game-stage { background: transparent; }
   touch-action: manipulation;
   pointer-events: auto;
 }
+
+/* When the game is paused (a modal is open), no pointer input may reach the
+   map or steering layer — guarantees decision/finish buttons get every tap. */
+body.game-paused #race-map,
+body.game-paused #tap-zone,
+body.game-paused .maplibregl-canvas-container,
+body.game-paused #race-map canvas { pointer-events: none !important; touch-action: none !important; }
+
+/* "built by juraj.digital" credit — subtle, bottom-right */
+.built-by {
+  position: fixed;
+  right: 10px;
+  bottom: calc(8px + env(safe-area-inset-bottom));
+  z-index: 90;
+  font: 600 11px/1 var(--font-body);
+  letter-spacing: .02em;
+  color: rgba(241, 204, 126, .55);
+  text-decoration: none;
+  pointer-events: auto;
+}
+.built-by:hover { color: var(--rc-cream); text-decoration: none; }
+body.game .built-by { color: rgba(241, 204, 126, .45); }

@@ -247,10 +247,15 @@
       mapTickHandle = requestAnimationFrame(tick);
       return;
     }
-    /* Freeze the map while a modal is open (paused) — the per-frame
-       map.jumpTo() repaint under the overlay was eating touches on the
-       tactic/finish buttons on mobile. */
-    if (state.paused || state.finished) {
+    /* When a modal is open (paused), disable ALL pointer input on the map and
+       steering layer (via body.game-paused) so only the modal can be tapped,
+       and freeze the per-frame map repaint. This is the definitive fix for the
+       decision buttons being unresponsive. */
+    const blocked = !!(state.paused || state.finished);
+    if (document.body.classList.contains('game-paused') !== blocked) {
+      document.body.classList.toggle('game-paused', blocked);
+    }
+    if (blocked) {
       mapTickHandle = requestAnimationFrame(tick);
       return;
     }

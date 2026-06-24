@@ -746,9 +746,21 @@
       const kmh = state.speed * SPEED_KMH_SCALE;
       const km  = state.progressPct * totalKm / 100;
 
+      /* Pro-cycling power (W) + heart rate (bpm), derived from effort, gradient
+         and remaining glycogen (state.energy). */
+      let watts = 120 + (pressing ? 250 : 100) + Math.max(0, grad) * 26;
+      if (grad < -2.5) watts = 110;                 // freewheeling on descents
+      watts = Math.round(Math.max(85, watts * (0.7 + state.energy / 333)));
+      let hr = 138 + (pressing ? 16 : 0) + Math.max(0, grad) * 3.2 + (1 - state.energy / 100) * 30;
+      hr = Math.round(Math.max(120, Math.min(193, hr)));
+      /* Smooth so the readouts don't flicker frame-to-frame */
+      state.wattsDisp = state.wattsDisp == null ? watts : state.wattsDisp + (watts - state.wattsDisp) * 0.15;
+      state.hrDisp    = state.hrDisp == null ? hr : state.hrDisp + (hr - state.hrDisp) * 0.08;
+
       window.rcUI.setTimer(state.elapsed);
       window.rcUI.setProgressPct(state.progressPct);
-      window.rcUI.setCadence(state.cadence);
+      window.rcUI.setWatts(state.wattsDisp);
+      window.rcUI.setHR(state.hrDisp);
       window.rcUI.setEnergy(state.energy);
       window.rcUI.setSpeed(kmh);
       window.rcUI.setDistance(km, totalKm);

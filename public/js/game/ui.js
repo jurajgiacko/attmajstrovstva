@@ -2,10 +2,10 @@
 (function () {
   const els = {
     timer:    document.getElementById('hud-timer'),
-    energy:   document.getElementById('hud-energy'),
+    watts:    document.getElementById('hud-watts'),
     energyBar:document.querySelector('#energy-bar > span'),
     energyBarWrap: document.getElementById('energy-bar'),
-    cadence:  document.getElementById('hud-cadence'),
+    hr:       document.getElementById('hud-hr'),
     zones:    document.getElementById('cadence-zones'),
     monument: document.getElementById('hud-monument'),
     posMarker:document.getElementById('pos-marker'),
@@ -25,17 +25,18 @@
     return `${String(m).padStart(2, '0')}:${sec}`;
   }
 
-  function cadenceZone(rpm) {
-    if (rpm < 70)   return 'low';
-    if (rpm < 80)   return 'below';
-    if (rpm <= 95)  return 'ideal';
-    if (rpm <= 110) return 'above';
+  /* Heart-rate zones (pro endurance) → reuse the 5-dot strip. */
+  function hrZone(bpm) {
+    if (bpm < 142)  return 'low';
+    if (bpm < 156)  return 'below';
+    if (bpm <= 168) return 'ideal';
+    if (bpm <= 180) return 'above';
     return 'anaer';
   }
 
-  function setCadenceZones(rpm) {
+  function setHRZones(bpm) {
     if (!els.zones) return;
-    const z = cadenceZone(rpm);
+    const z = hrZone(bpm);
     els.zones.dataset.zone = z;
     const lit = { low: 1, below: 2, ideal: 3, above: 4, anaer: 5 }[z];
     [...els.zones.children].forEach((s, i) => s.classList.toggle('lit', i < lit));
@@ -51,13 +52,17 @@
   window.rcUI = {
     els,
     fmtTime,
-    cadenceZone,
-    setCadenceZones,
+    hrZone,
+    setHRZones,
     setEnergyBar,
     setMonumentName(name) { if (els.monument) els.monument.textContent = name; },
     setTimer(seconds)     { if (els.timer)    els.timer.textContent = fmtTime(seconds); },
-    setEnergy(value)      { if (els.energy)   els.energy.textContent = Math.round(value); setEnergyBar(value); },
-    setCadence(rpm)       { if (els.cadence)  els.cadence.textContent = Math.round(rpm); setCadenceZones(rpm); },
+    /* Power reserve bar (glycogen) — keeps driving the bonk/pickup mechanic. */
+    setEnergy(value)      { setEnergyBar(value); },
+    setWatts(w)           { if (els.watts) els.watts.textContent = Math.round(w); },
+    setHR(bpm)            { if (els.hr) els.hr.textContent = Math.round(bpm); setHRZones(bpm); },
+    /* Back-compat: old calls to setCadence now feed the HR strip harmlessly. */
+    setCadence()          {},
     setProgressPct(pct)   { if (els.posMarker) els.posMarker.style.left = `${Math.max(0, Math.min(100, pct))}%`; },
     setSpeed(kmh)         { if (els.speed) els.speed.textContent = Math.round(kmh); },
     setDistance(km, total) {
