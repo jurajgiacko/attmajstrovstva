@@ -61,6 +61,8 @@
     activeState = state;
     activeOnChoice = onChoice;
     state.paused = true;
+    /* Make sure no other overlay (landmark card) is left on top of the modal. */
+    document.querySelectorAll('.landmark-card.show').forEach(e => e.classList.remove('show'));
 
     els.ctx.textContent = tactic.context || 'Rozhodnutí';
     els.title.textContent = tactic.context || 'Tvůj tah';

@@ -91,6 +91,8 @@
     if (!els.modal || state.finished) return;
     state.finished = true;
     state.paused = true;
+    /* Clear any other overlay so the finish modal is the only thing on top. */
+    document.querySelectorAll('.landmark-card.show, .scene-overlay.show').forEach(e => e.classList.remove('show'));
 
     const score = computeScore(state);
     const style = classifyStyle(state.styleLog);

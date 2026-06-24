@@ -1640,7 +1640,7 @@ body.race-active .game-stage { background: transparent; }
 .tactic-modal {
   position: fixed;
   inset: 0;
-  z-index: 11;
+  z-index: 1000;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1775,7 +1775,7 @@ body.race-active .game-stage { background: transparent; }
 .finish-modal {
   position: fixed;
   inset: 0;
-  z-index: 12;
+  z-index: 1001;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1911,7 +1911,7 @@ body.race-active .game-stage { background: transparent; }
   position: fixed;
   inset: 0;
   pointer-events: none;
-  z-index: 13;
+  z-index: 1002;
   overflow: hidden;
 }
 .confetti span {
