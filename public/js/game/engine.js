@@ -145,7 +145,9 @@
     const colors = ['#a52447', '#7c1a32', '#c44470', '#5a1530', '#e4cb9d'];
     for (let i = 0; i < 5; i++) {
       peloton.push({
-        relativeAhead: 60 + i * 40 + rand(-15, 15),
+        /* Mostly behind/alongside the player. ATT leads the bunch from early on;
+           one rival sits just ahead at the gun and gets reeled in. */
+        relativeAhead: 20 - i * 38 + rand(-15, 15),
         laneX:         rand(-0.7, 0.7),
         color:         colors[i % colors.length],
         passed:        false,    // for overtake-once accounting
@@ -562,11 +564,12 @@
       /* Drift: peloton AI rides at "ideal" target speed ~1.05; if player
          exceeds that, peloton catches the player (their relativeAhead
          shrinks); if player slacks, they pull away. */
-      const target = state.speed * 1.05;
-      let drift = (1 - target) * 14 * dt;
-      /* Final kick: in the last stretch the ATT rider (player) pulls clear and
-         the rest of the field drifts behind — ATT wins the championship. */
-      if (state.progressPct > 84) drift -= 30 * dt;
+      /* ATT leads the bunch: rivals ride a touch slower than the player's
+         cruise, so they steadily slip behind unless the player really slacks
+         (then they close back up). Keeps ATT at the front of the peloton. */
+      let drift = (0.78 - state.speed) * 16 * dt;
+      /* Final kick: ATT pulls clear to win the championship. */
+      if (state.progressPct > 84) drift -= 26 * dt;
       c.relativeAhead += drift;
       c.bobPhase += dt * (4 + state.speed * 6);
 
@@ -583,8 +586,10 @@
 
       /* Respawn far-behind riders ahead of player so the field stays
          populated. Reset passed flag so they can be overtaken again. */
-      if (c.relativeAhead < -240 && state.progressPct < 84) {
-        c.relativeAhead = 380 + Math.random() * 280;
+      /* Riders that drop too far back re-join the chase just behind the
+         player so ATT keeps leading the bunch (never respawn ahead). */
+      if (c.relativeAhead < -300) {
+        c.relativeAhead = -90 - Math.random() * 120;
         c.laneX = -0.7 + Math.random() * 1.4;
         c.passed = false;
       }

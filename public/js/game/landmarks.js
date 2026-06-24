@@ -44,6 +44,7 @@
   let activeStateRef = null;
   function dismissCard() {
     if (!card) return;
+    clearTimeout(autoDismissT);
     card.classList.remove('show');
     if (activeStateRef) {
       setTimeout(() => { activeStateRef.paused = activeWasPaused; activeStateRef = null; }, 350);
@@ -173,8 +174,13 @@
     activeStateRef = state;
     state.paused = true;
     card.classList.add('show');
+    /* Auto-advance after a few seconds so landmark cards never pile up or
+       block the flow — the player can still tap Foto/Pokračuj sooner. */
+    clearTimeout(autoDismissT);
+    autoDismissT = setTimeout(dismissCard, 3200);
     window.rcTrack && window.rcTrack('landmark_enter', { zone: idx, art: z.art });
   }
+  let autoDismissT = null;
 
   function tick(state) {
     if (!state || !state.monument) return;
