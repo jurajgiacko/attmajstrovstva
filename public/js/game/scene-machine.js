@@ -33,12 +33,23 @@
     scenes.set(id, scene);
   }
 
+  let transitioning = false;
   async function go(id, payload = null) {
     const next = scenes.get(id);
     if (!next) {
       console.error('[scene] unknown scene:', id);
       return;
     }
+    /* Re-entrancy guard: ignore overlapping transitions (stale auto-advance
+       timers, double-taps) that would otherwise interleave enter/exit and
+       could restart the flow. */
+    if (transitioning) {
+      console.warn('[scene] go() ignored — transition in progress →', id);
+      return;
+    }
+    if (id === getCurrentId()) return; /* already here */
+    transitioning = true;
+    try {
     if (current && current.exit) {
       try { await current.exit(); } catch (e) { console.error('[scene] exit failed:', e); }
     }
@@ -50,6 +61,7 @@
       catch (e) { console.error('[scene] enter failed:', e); }
     }
     window.rcTrack && window.rcTrack('scene_enter', { scene: id });
+    } finally { transitioning = false; }
   }
 
   /* Per-frame loop — engine.js used to drive RAF; the machine takes it over */
