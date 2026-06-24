@@ -2024,4 +2024,4 @@ body.game .built-by { color: rgba(241, 204, 126, .45); }
 
 /* In-race / post-race full-screen scenes must sit above ALL other overlays
    (landmark cards, finish modal, confetti) so their buttons always get taps. */
-#scene-cafe, #scene-afterparty { z-index: 1100 !important; }
+#scene-cafe, #scene-afterparty, #scene-recovery { z-index: 1100 !important; }
