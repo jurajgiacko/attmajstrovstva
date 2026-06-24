@@ -107,7 +107,7 @@
     els.timeSub.textContent = `Časový bonus +${score.timeBonus}`;
     /* "Energie" / "Závěrečný stav" labels live in game.html now */
     els.energy.textContent = `${Math.round(state.energy)} / 100`;
-    els.energySub.textContent = `Energy bonus +${score.energyBonus}`;
+    els.energySub.textContent = `Bonus rezervy +${score.energyBonus}`;
     els.pickups.textContent = `${state.pickupsCollected || 0} / ${pickupsTotal}`;
     els.distance.textContent = `${distanceKm} km`;
 
