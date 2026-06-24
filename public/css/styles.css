@@ -2025,3 +2025,14 @@ body.game .built-by { color: rgba(241, 204, 126, .45); }
 /* In-race / post-race full-screen scenes must sit above ALL other overlays
    (landmark cards, finish modal, confetti) so their buttons always get taps. */
 #scene-cafe, #scene-afterparty, #scene-recovery { z-index: 1100 !important; }
+
+/* Reliable taps: tell the browser these are tap targets so a tiny finger
+   movement on a scrollable overlay isn't swallowed as a scroll gesture
+   (was the intermittent "can't advance" on packing / choices). */
+.btn, .food-card, .pack-chip, .pocket, .btn-pump, .tactic-btn, .rs-card,
+#pack-confirm, #pack-reset, .ap-actions .btn, #lm-continue, #map-go, #intro-start {
+  touch-action: manipulation;
+}
+/* During the race the bottom-right is a steering/boost zone — don't let the
+   credit link intercept those taps. */
+body.race-active .built-by { pointer-events: none; }

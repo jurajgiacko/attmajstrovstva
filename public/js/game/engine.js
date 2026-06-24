@@ -691,6 +691,7 @@
   function frame(now) {
     const dt = Math.min(0.05, (now - lastT) / 1000);
     lastT = now;
+    try {
 
     if (!state.waiting && !state.paused && !state.finished) {
       state.elapsed += dt;
@@ -778,6 +779,7 @@
     drawStations();
     drawPeloton(state.waiting ? 0 : Math.min(0.05, dt));
     drawPlayer();
+    } catch (e) { console.error('[engine] frame error (recovered)', e); }
 
     requestAnimationFrame(frame);
   }

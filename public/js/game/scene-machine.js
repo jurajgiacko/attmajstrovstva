@@ -57,8 +57,10 @@
   function loop(now) {
     const dt = Math.min(0.05, (now - lastT) / 1000);
     lastT = now;
-    if (current && current.tick) current.tick(dt);
-    if (current && current.render) current.render(dt);
+    try {
+      if (current && current.tick) current.tick(dt);
+      if (current && current.render) current.render(dt);
+    } catch (e) { console.error('[scene-loop] error (recovered)', e); }
     requestAnimationFrame(loop);
   }
 

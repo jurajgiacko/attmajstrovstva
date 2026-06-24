@@ -238,15 +238,10 @@
 
   /* ---- Per-frame map update — driven from race.tick ---- */
   function tick() {
-    if (!map || !mapInitialized) {
-      mapTickHandle = requestAnimationFrame(tick);
-      return;
-    }
+   try {
+    if (!map || !mapInitialized) return;
     const state = window.rcEngine && window.rcEngine.getState();
-    if (!state) {
-      mapTickHandle = requestAnimationFrame(tick);
-      return;
-    }
+    if (!state) return;
     /* When a modal is open (paused), disable ALL pointer input on the map and
        steering layer (via body.game-paused) so only the modal can be tapped,
        and freeze the per-frame map repaint. This is the definitive fix for the
@@ -255,10 +250,7 @@
     if (document.body.classList.contains('game-paused') !== blocked) {
       document.body.classList.toggle('game-paused', blocked);
     }
-    if (blocked) {
-      mapTickHandle = requestAnimationFrame(tick);
-      return;
-    }
+    if (blocked) return;
     const pct = state.progressPct || 0;
     const playerPct = pct;
     const pCoord = pctToCoord(playerPct);
@@ -297,8 +289,8 @@
         if (!el.classList.contains('map-station-collected')) el.classList.add('map-station-collected');
       }
     });
-
-    mapTickHandle = requestAnimationFrame(tick);
+   } catch (e) { console.error('[race-tick] error (recovered)', e); }
+   finally { mapTickHandle = requestAnimationFrame(tick); }
   }
 
   /* ---- Scene transitions ---- */
