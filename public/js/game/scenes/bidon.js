@@ -17,7 +17,7 @@
     overlay.innerHTML = `
       <div class="bg-art" style="background-image:url('/assets/scenes/prerace/garage-bike-check.png'); opacity:.18"></div>
       <div class="prerace-shell">
-        <div class="step-pill">Krok 3 / 5 · Bidon</div>
+        <div class="step-pill">Před startem · Bidon od týmu</div>
         <h2 class="title-display">Namíchej Isocarb</h2>
         <p class="lead">Drž tlačítko a lij. <strong>Cílové pásmo</strong> = optimální koncentrace. Přeteče = mokrý dres.</p>
         <div class="bidon-stage">

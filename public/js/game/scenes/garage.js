@@ -17,9 +17,9 @@
     overlay.innerHTML = `
       <div class="bg-art" style="background-image:url('/assets/scenes/prerace/garage-bike-check.png')"></div>
       <div class="prerace-shell">
-        <div class="step-pill">Krok 2 / 5 · Garáž</div>
-        <h2 class="title-display">Nahust pneumatiku</h2>
-        <p class="lead">Drž tlačítko na pumpování. <strong>Cíl ~8.5 bar</strong>. Přefoukneš → praskne, podfoukneš → defekt.</p>
+        <div class="step-pill">Před startem · Servisní vůz</div>
+        <h2 class="title-display">Tlak v pláštích</h2>
+        <p class="lead">Mechanik chystá kolo — ty hlídáš tlak. Drž tlačítko, dokud nejsi na závodním tlaku. <strong>Cíl ~8.5 bar</strong>. Moc → defekt, málo → měkký plášť.</p>
         <div class="gauge-wrap">
           <div class="gauge-bar" id="gauge-bar">
             <div class="gauge-target"></div>
@@ -28,7 +28,7 @@
           </div>
           <div class="gauge-readout"><span id="gauge-val">0.0</span> <small>bar</small></div>
         </div>
-        <button type="button" class="btn-pump" id="pump-btn">Drž a pumpuj</button>
+        <button type="button" class="btn-pump" id="pump-btn">Drž — hustí se</button>
         <div class="prerace-foot" id="garage-foot">Pusť tlačítko když trefíš pásmo 8.0–9.0 bar.</div>
       </div>
     `;

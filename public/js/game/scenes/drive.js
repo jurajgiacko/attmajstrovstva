@@ -12,7 +12,7 @@
     overlay.innerHTML = `
       <div class="bg-art" style="background-image:url('/assets/scenes/prerace/drive-to-start.png')"></div>
       <div class="prerace-shell">
-        <div class="step-pill">Krok 5 / 5 · Cesta na start</div>
+        <div class="step-pill">Přesun · Týmový autobus</div>
         <h2 class="title-display">Jeseník, Masarykovo náměstí</h2>
         <p class="lead" id="drive-summary">…</p>
         <div class="prep-summary" id="prep-summary"></div>
@@ -44,7 +44,7 @@
     build();
     const j = window.rcScenes.journey();
     overlay.querySelector('#drive-summary').innerHTML =
-      `Jsi v autě, na střeše kolo. Před sebou okruh 26,2 km kolem Jeseníku — stoupání na Rejvíz. Cíl: Masarykovo náměstí.`;
+      `Týmový autobus tě veze na start, mechanici naložili kola, sportovní ředitel ještě jednou projíždí plán okruhu. Před tebou 26,2 km — stoupání na Rejvíz. Cíl: Masarykovo náměstí.`;
     overlay.querySelector('#prep-summary').innerHTML = summarize(j);
     overlay.classList.add('show');
 

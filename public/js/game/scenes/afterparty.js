@@ -23,7 +23,7 @@
   const ARCS = {
     /* recovery: PROSECCO + STYLE */
     'celebrate-attacker': [
-      { img: 'afterparty-cellar.png',  title: 'Horská chata',     body: 'Hostinský tě poznává ze závodu a rozumí tvému solo útěku. Otevírá jesenický bylinný likér. Bublinky stoupají rychleji než tvůj puls na Ramzové.' },
+      { img: 'afterparty-cellar.png',  title: 'Horská chata',     body: 'Hostinský tě poznává ze závodu a rozumí tvému solo útěku. Otevírá jesenický bylinný likér. Bublinky stoupají rychleji než tvůj puls na Rejvíz.' },
       { img: 'afterparty-music.png',   title: 'Cimbálovka & oslavné kola', body: 'Někdo připije: „Na atak!" Cimbálovka střídá valčík za csardáš. Tvůj vítězný nájezd dnes ještě jednou, jen v hudbě.' },
       { img: 'afterparty-cheers.png',  title: 'Trofejní přípitek',         body: 'Diplom se nedostal jen peletonu — zařízl jsi vlastní pruh. Pět skleniček uprostřed stolu. Tvoje jméno padá v rozhovoru.' },
       { img: 'afterparty-stars.png',   title: 'Sám na vrcholu',            body: 'Před půlnocí kráčíš k vyhlídce sám. Hvězdy svítí jako při tvém sprintu. <em>Vyhrál jsi svůj ročník — i kdybys nikoho nepředjel, vyhrál jsi sebe.</em>', finale: true }
@@ -36,7 +36,7 @@
     ],
     'celebrate-fueler': [
       { img: 'afterparty-cellar.png',  title: 'Chata & čerstvé síly',   body: 'Tvoje strategie plnění kapes se vyplatila — máš ještě energii dopít celou láhev. Hostinský zvedá obočí nad tvou výdrží.' },
-      { img: 'afterparty-cheers.png',  title: 'Energetický mág',           body: 'U stolu padají otázky: „Který gel před Reistnou? Caffeine?" Ty kýveš. Tvoje schopnost dávkovat ti dnes přinesla víc než svaly.' },
+      { img: 'afterparty-cheers.png',  title: 'Energetický mág',           body: 'U stolu padají otázky: „Který gel před Rejvíz? Caffeine?" Ty kýveš. Tvoje schopnost dávkovat ti dnes přinesla víc než svaly.' },
       { img: 'afterparty-music.png',   title: 'Tanec s vínem',             body: 'Hraje folklór, ty si to vychutnáváš. Dnes tě neporazila energy, víno tě taky neporazí.' },
       { img: 'afterparty-stars.png',   title: 'Zasloužený výhled',         body: 'Stojíš u vyhlídky s posledním pohárem. <em>Někteří jsou silní v nohách. Ty jsi silný v plánování.</em>', finale: true }
     ],
@@ -49,7 +49,7 @@
 
     /* recovery: PIVO + STYLE */
     'classic-attacker': [
-      { img: 'afterparty-cellar.png',  title: 'Sklep & půllitry',          body: 'Trefíš se do sklepa přes všechny ty horské louky a lesy. Pivo jde dolů první bez problému. Atak na Ramzovou byl mladší než tohle pivo.' },
+      { img: 'afterparty-cellar.png',  title: 'Sklep & půllitry',          body: 'Trefíš se do sklepa přes všechny ty horské louky a lesy. Pivo jde dolů první bez problému. Atak na Rejvíz byl mladší než tohle pivo.' },
       { img: 'afterparty-music.png',   title: 'Folklórní divočina',        body: 'Cimbálovka rozhodí klasiku, ty kopíruješ kroky. Adrenalin ze závodu ještě neopadl — promítá se do tance.' },
       { img: 'afterparty-cheers.png',  title: 'Půllitry na atak',          body: '„Na sólovou jízdu!" Pět půllitrů se srazí uprostřed. Pěna teče. Tvůj solo úsek dnes byl v záznamech.' },
       { img: 'afterparty-stars.png',   title: 'Tichý vrchol',              body: 'Kráčíš u vyhlídky, poslední doušek z lahve. <em>Pivo je odměna těla. Vyhlídka je odměna duše.</em>', finale: true }

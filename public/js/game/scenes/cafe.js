@@ -45,9 +45,9 @@
     overlay.innerHTML = `
       <div class="bg-art" style="background-image:url('/assets/scenes/stations/cafe-pavlov.png')"></div>
       <div class="prerace-shell">
-        <div class="step-pill">~50 % trasy · Pavlov</div>
-        <h2 class="title-display">U vinice je kavárna</h2>
-        <p class="lead">Cyklisté sedí, někdo se zakousne do koláčku. Stavíš se?</p>
+        <div class="step-pill">~50 % okruhu · Občerstvovačka</div>
+        <h2 class="title-display">Týmový vůz u silnice</h2>
+        <p class="lead">Sportovní ředitel se vyklání z auta s lahví a gelem. Vezmeš si rychlé občerstvení?</p>
         <div class="food-cards" id="cafe-cards">
           ${OPTIONS.map(o => `
             <button type="button" class="food-card${o.id === 'skip' ? ' food-skip' : ''}" data-id="${o.id}">

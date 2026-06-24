@@ -18,9 +18,9 @@
     overlay.innerHTML = `
       <div class="bg-art" style="background-image:url('/assets/scenes/prerace/kitchen-breakfast.png')"></div>
       <div class="prerace-shell">
-        <div class="step-pill">Krok 1 / 5 · Ráno</div>
+        <div class="step-pill">Ráno · Týmový hotel</div>
         <h2 class="title-display">Čím začneš?</h2>
-        <p class="lead">Jeseníky tě nenechají levně. Vyber snídani — každé jídlo ti dá jiný start.</p>
+        <p class="lead">Snídaně v týmovém hotelu před startem. Vyber, čím natankuješ — každé jídlo ti dá jiný rozjezd.</p>
         <div class="food-cards" id="bf-cards">
           ${OPTIONS.map(o => `
             <button type="button" class="food-card" data-id="${o.id}">

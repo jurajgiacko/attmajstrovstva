@@ -44,9 +44,9 @@
     overlay.innerHTML = `
       <div class="bg-art" style="background-image:url('/assets/scenes/prerace/jersey-packing.png'); opacity:.18"></div>
       <div class="prerace-shell">
-        <div class="step-pill">Krok 4 / 5 · Tres</div>
+        <div class="step-pill">Před startem · Dres</div>
         <h2 class="title-display">Naplň si dres</h2>
-        <p class="lead">Ťukni na produkt Enervit → ťukni na kapsu. <strong>Max 2 / kapsa.</strong> Vyvážená sada (gel + bar + jelly) = max bonus.</p>
+        <p class="lead">Sety od týmu si naskládáš do kapes dresu. Ťukni na produkt Enervit → ťukni na kapsu. <strong>Max 2 / kapsa.</strong> Vyvážená sada (gel + bar + jelly) = max bonus.</p>
         <div class="packing-stage">
           <div class="jersey">
             <div class="pocket" data-i="0"><span class="lbl">L kapsa</span></div>
