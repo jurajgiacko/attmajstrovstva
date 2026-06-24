@@ -528,26 +528,26 @@ body.race-active .game-stage { background: transparent; }
 
 /* Bike markers on the map */
 .map-bike-marker {
-  width: 38px;
-  height: 46px;                  /* taller — top-down rider is a vertical shape */
+  width: 56px;
+  height: 68px;                  /* taller — top-down rider is a vertical shape */
   display: block;
   overflow: hidden;
   pointer-events: none;
   will-change: transform;
   /* Transparent top-down cyclist (white bg chroma-keyed out) */
-  filter: drop-shadow(0 3px 5px rgba(0,0,0,.55));
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,.6));
 }
 .map-bike-marker img {
   width: 100%;
   height: 100%;
   object-fit: contain;
-  transform: scale(1.55);        /* gentle zoom; keep most of the bike visible */
+  transform: scale(1.5);
   transform-origin: 50% 50%;
 }
 .map-bike-marker.map-player {
-  width: 50px;
-  height: 60px;
-  filter: drop-shadow(0 4px 8px rgba(229,55,71,0.65));
+  width: 74px;
+  height: 88px;
+  filter: drop-shadow(0 4px 10px rgba(229,55,71,0.7));
 }
 .map-bike-marker.map-player::after {
   content: "";

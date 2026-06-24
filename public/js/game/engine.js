@@ -563,7 +563,10 @@
          exceeds that, peloton catches the player (their relativeAhead
          shrinks); if player slacks, they pull away. */
       const target = state.speed * 1.05;
-      const drift = (1 - target) * 14 * dt;
+      let drift = (1 - target) * 14 * dt;
+      /* Final kick: in the last stretch the ATT rider (player) pulls clear and
+         the rest of the field drifts behind — ATT wins the championship. */
+      if (state.progressPct > 84) drift -= 30 * dt;
       c.relativeAhead += drift;
       c.bobPhase += dt * (4 + state.speed * 6);
 
@@ -580,7 +583,7 @@
 
       /* Respawn far-behind riders ahead of player so the field stays
          populated. Reset passed flag so they can be overtaken again. */
-      if (c.relativeAhead < -240) {
+      if (c.relativeAhead < -240 && state.progressPct < 84) {
         c.relativeAhead = 380 + Math.random() * 280;
         c.laneX = -0.7 + Math.random() * 1.4;
         c.passed = false;

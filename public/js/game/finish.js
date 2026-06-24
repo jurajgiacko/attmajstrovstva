@@ -98,6 +98,8 @@
     const pickupsTotal = (state.monument?.pickups || []).length;
 
     els.ribbon.textContent = `${state.monument?.name || 'Závod'} dokončen`;
+    const stamp = document.getElementById('finish-stamp');
+    if (stamp) stamp.textContent = '🏆 1. místo · ATT Investments vítězí';
     els.score.textContent = score.total;
     els.styleLabel.textContent = style.label;
     els.styleGlyph.textContent = style.glyph;

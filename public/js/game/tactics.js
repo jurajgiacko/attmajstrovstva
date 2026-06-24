@@ -32,7 +32,7 @@
     pendingHint = setTimeout(() => els.incoming.classList.remove('show'), 1800);
   }
 
-  const COUNTDOWN_MS = 7000; // give the player time to read the options
+  const COUNTDOWN_MS = 12000; // give the player time to read the options
 
   function open(state, tactic, onChoice) {
     if (!els.modal) return;
